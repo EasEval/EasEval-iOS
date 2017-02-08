@@ -30,11 +30,31 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    func getSomething() {
+        
+        let testQuery = PFQuery(className: "TestObject")
+        testQuery.findObjectsInBackground { (objects, error) in
+            
+            if error == nil {
+                
+                if let objects = objects {
+                    
+                    for obj in objects {
+                        
+                        print(obj["TestNum"] as! Int)
+                    }
+                }
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.testButton.layer.cornerRadius = self.testButton.frame.size.width/2;
+        
+        getSomething()
     }
 
     override func didReceiveMemoryWarning() {
