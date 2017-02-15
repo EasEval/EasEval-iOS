@@ -6,59 +6,69 @@
 import UIKit
 import Parse
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet var testButton: UIButton!
+    @IBOutlet var textFieldName: UITextField!
+    @IBOutlet var textFieldPassword: UITextField!
+    @IBOutlet var buttonLogin: UIButton!
     
-    var num = 0
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
-    @IBAction func testAction(_ sender: Any) {
+    @IBAction func actionLogin(_ sender: Any) {
         
-        uploadSomething(i: num)
-        num += 1
+    
+        let name = textFieldName.text!
+        let password = textFieldPassword.text!
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        self.view.alpha = 0.5
+        
+        logInUser(name: name, password: password)
     }
     
-    func uploadSomething(i:Int) {
+    func logInUser(name:String, password:String) {
         
-        let testObject = PFObject(className: "TestObject")
-        testObject["TestNum"] = i
-        testObject.saveInBackground { (success, error) in
+        PFUser.logInWithUsername(inBackground: name, password: password) { (user, error) in
             
-            if success {
+            if user != nil {
                 
-                print("Object has been saved.")
+                self.performSegue(withIdentifier: "segue_to_subjects", sender: self)
+                
+            } else {
+                
+                Utilities.displayAlert("Obs",message: "Feil brukernavn eller passord", view: self)
             }
+            self.view.alpha = 1
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
     
-    func getSomething() {
-        
-        let testQuery = PFQuery(className: "TestObject")
-        testQuery.findObjectsInBackground { (objects, error) in
-            
-            if error == nil {
-                
-                if let objects = objects {
-                    
-                    for obj in objects {
-                        
-                        print(obj["TestNum"] as! Int)
-                    }
-                }
-            }
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.testButton.layer.cornerRadius = self.testButton.frame.size.width/2;
+        self.buttonLogin.layer.cornerRadius = self.buttonLogin.frame.size.width/2
+        self.buttonLogin.layer.borderWidth = 0.5
+        self.buttonLogin.layer.borderColor = UIColor.darkGray.cgColor
+        activityIndicator.stopAnimating()
         
-        getSomething()
+        if PFUser.current() != nil {
+            
+            self.performSegue(withIdentifier: "segue_to_subjects", sender: self)
+            //logInUser(name: name, password: password)
+        }
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
+
 }
