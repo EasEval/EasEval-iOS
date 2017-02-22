@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Charts
 
 class RatingViewController: UIViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
+    @IBOutlet var barChartView: BarChartView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +25,37 @@ class RatingViewController: UIViewController {
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-
+        
+        let months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "August", "Sept", "Oct", "Nov", "Dec"]
+        
+        let dollars1 = [10.0,20.0,15.0,30.0,40.0,41.0,5.0,10,12,15,13,50]
+        
+        setChart(dataPoints: months, values: dollars1)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func setChart(dataPoints:[String], values:[Double]) {
+        
+        //var yValues : [ChartDataEntry] = [ChartDataEntry]()
+        
+        var dataEntries: [BarChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
+            dataEntries.append(dataEntry)
+        }
+        
+        let chartDataSet = BarChartDataSet(values: dataEntries, label: "Units Sold")
+        let chartData = BarChartData()
+        chartData.addDataSet(chartDataSet)
+        barChartView.data = chartData
+        barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+    }
+
     
 
     /*

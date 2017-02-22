@@ -18,6 +18,9 @@
 		75C3BA2E1E5D9B1800343351 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3BA2D1E5D9B1800343351 /* Exercise.swift */; };
 		75C3BA301E5DA3D500343351 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3BA2F1E5DA3D500343351 /* RatingViewController.swift */; };
 		75C3BA321E5DA40500343351 /* AmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3BA311E5DA40500343351 /* AmountViewController.swift */; };
+		75C3BA521E5DC45400343351 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C3BA4D1E5DC41E00343351 /* Charts.framework */; };
+		75C3BA531E5DC45400343351 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 75C3BA4D1E5DC41E00343351 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		75C3BA581E5DCD7100343351 /* PieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3BA571E5DCD7100343351 /* PieChartViewController.swift */; };
 		814C3ACA1B69877600E307BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC61B69877600E307BB /* Main.storyboard */; };
 		814C3ACB1B69877600E307BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC81B69877600E307BB /* Images.xcassets */; };
 		81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814A1A49DA1800E65899 /* AppDelegate.swift */; };
@@ -29,6 +32,51 @@
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		75C3BA4C1E5DC41E00343351 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75C3BA461E5DC41D00343351 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06165F241D8110E600722320;
+			remoteInfo = Charts;
+		};
+		75C3BA4E1E5DC41E00343351 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75C3BA461E5DC41D00343351 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06B120D51D811E6200D14B02;
+			remoteInfo = ChartsRealm;
+		};
+		75C3BA501E5DC41E00343351 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75C3BA461E5DC41D00343351 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06165F2E1D8110E600722320;
+			remoteInfo = ChartsTests;
+		};
+		75C3BA541E5DC45400343351 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75C3BA461E5DC41D00343351 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 06165F231D8110E600722320;
+			remoteInfo = Charts;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		75C3BA561E5DC45500343351 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				75C3BA531E5DC45400343351 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		752A7B9E1E355AD10062E1FB /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -44,6 +92,8 @@
 		75C3BA2D1E5D9B1800343351 /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		75C3BA2F1E5DA3D500343351 /* RatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		75C3BA311E5DA40500343351 /* AmountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountViewController.swift; sourceTree = "<group>"; };
+		75C3BA461E5DC41D00343351 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
+		75C3BA571E5DCD7100343351 /* PieChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartViewController.swift; sourceTree = "<group>"; };
 		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		814C3AC81B69877600E307BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		814C3AC91B69877600E307BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,6 +118,7 @@
 				81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */,
 				81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */,
 				81BA81791A49E0DB00E65899 /* AudioToolbox.framework in Frameworks */,
+				75C3BA521E5DC45400343351 /* Charts.framework in Frameworks */,
 				81BA81771A49E0D500E65899 /* libsqlite3.dylib in Frameworks */,
 				81BA81711A49DB6800E65899 /* Parse.framework in Frameworks */,
 				81BA81701A49DB6800E65899 /* Bolts.framework in Frameworks */,
@@ -99,6 +150,7 @@
 		75C3BA331E5DA40F00343351 /* Exercises */ = {
 			isa = PBXGroup;
 			children = (
+				75C3BA571E5DCD7100343351 /* PieChartViewController.swift */,
 				75C3BA2B1E5D927800343351 /* ExercisesTableViewController.swift */,
 				75C3BA2F1E5DA3D500343351 /* RatingViewController.swift */,
 				75C3BA311E5DA40500343351 /* AmountViewController.swift */,
@@ -114,6 +166,16 @@
 				75C3B9DA1E546D8900343351 /* SubjectMainPageViewController.swift */,
 			);
 			name = Subjects;
+			sourceTree = "<group>";
+		};
+		75C3BA471E5DC41D00343351 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				75C3BA4D1E5DC41E00343351 /* Charts.framework */,
+				75C3BA4F1E5DC41E00343351 /* ChartsRealm.framework */,
+				75C3BA511E5DC41E00343351 /* ChartsTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		814C3AC51B69877600E307BB /* Resources */ = {
@@ -146,6 +208,7 @@
 		81BA81471A49DA1800E65899 /* P1 */ = {
 			isa = PBXGroup;
 			children = (
+				75C3BA461E5DC41D00343351 /* Charts.xcodeproj */,
 				75C3BA341E5DA43D00343351 /* Subjects */,
 				75C3BA331E5DA40F00343351 /* Exercises */,
 				75C3B9D51E546B2500343351 /* SWRevealViewController */,
@@ -193,10 +256,12 @@
 				81BA81411A49DA1800E65899 /* Sources */,
 				81BA81421A49DA1800E65899 /* Frameworks */,
 				81BA81431A49DA1800E65899 /* Resources */,
+				75C3BA561E5DC45500343351 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				75C3BA551E5DC45400343351 /* PBXTargetDependency */,
 			);
 			name = PUProject;
 			productName = ParseStarterProject;
@@ -231,12 +296,42 @@
 			mainGroup = 81BA813C1A49DA1800E65899;
 			productRefGroup = 81BA81461A49DA1800E65899 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 75C3BA471E5DC41D00343351 /* Products */;
+					ProjectRef = 75C3BA461E5DC41D00343351 /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				81BA81441A49DA1800E65899 /* PUProject */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		75C3BA4D1E5DC41E00343351 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 75C3BA4C1E5DC41E00343351 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75C3BA4F1E5DC41E00343351 /* ChartsRealm.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ChartsRealm.framework;
+			remoteRef = 75C3BA4E1E5DC41E00343351 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75C3BA511E5DC41E00343351 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 75C3BA501E5DC41E00343351 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		81BA81431A49DA1800E65899 /* Resources */ = {
@@ -267,11 +362,20 @@
 				75C3BA321E5DA40500343351 /* AmountViewController.swift in Sources */,
 				75C3B9D31E545F3600343351 /* Subject.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
+				75C3BA581E5DCD7100343351 /* PieChartViewController.swift in Sources */,
 				75C3B9DB1E546D8900343351 /* SubjectMainPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		75C3BA551E5DC45400343351 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = 75C3BA541E5DC45400343351 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		814C3AC61B69877600E307BB /* Main.storyboard */ = {
@@ -376,6 +480,7 @@
 		81BA81651A49DA1800E65899 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -397,6 +502,7 @@
 		81BA81661A49DA1800E65899 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;

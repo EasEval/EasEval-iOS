@@ -458,26 +458,41 @@
                     <view key="view" contentMode="scaleToFill" id="wAt-Cg-6z5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7U-9o-Wa8" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="72" width="375" height="546"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="a7U-9o-Wa8" firstAttribute="top" secondItem="4EP-IC-CQO" secondAttribute="bottom" constant="8" id="PrL-82-VGS"/>
+                            <constraint firstItem="a7U-9o-Wa8" firstAttribute="leading" secondItem="wAt-Cg-6z5" secondAttribute="leading" id="UYL-pe-bA7"/>
+                            <constraint firstItem="O6g-15-Y7T" firstAttribute="top" secondItem="a7U-9o-Wa8" secondAttribute="bottom" id="Vq3-aq-2iJ"/>
+                            <constraint firstAttribute="trailing" secondItem="a7U-9o-Wa8" secondAttribute="trailing" id="d29-oY-5YJ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="ohn-BT-z3p"/>
                     <navigationItem key="navigationItem" id="044-BH-mvA">
                         <barButtonItem key="leftBarButtonItem" image="Side_menu_2" id="MPr-1L-KLs"/>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="menuButton" destination="MPr-1L-KLs" id="sW7-X5-xlE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l5h-oh-ZQ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9182" y="708"/>
+            <point key="canvasLocation" x="9028" y="314"/>
         </scene>
         <!--Amount-->
         <scene sceneID="QO5-nD-SOU">
             <objects>
                 <navigationController id="Lf1-h3-SUT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Amount" id="nvX-iH-oN7"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="b8L-lK-5J9">
+                    <tabBarItem key="tabBarItem" title="Amount" image="Barchart_icon" id="nvX-iH-oN7"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b8L-lK-5J9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.70588235290000001" green="0.7725490196" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -488,7 +503,66 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="32a-L5-GYV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8265" y="709"/>
+            <point key="canvasLocation" x="8265" y="313"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="fee-HO-b6y">
+            <objects>
+                <navigationController id="lZc-D9-F1b" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Title" image="Piechart_vector" id="OlG-VC-qWJ"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wkb-9h-eOb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.70588235290000001" green="0.7725490196" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ciy-Bl-9bw" kind="relationship" relationship="rootViewController" id="u7s-LK-dqF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ybq-el-ae6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8265" y="1056"/>
+        </scene>
+        <!--Pie Chart View Controller-->
+        <scene sceneID="TYt-sl-yB8">
+            <objects>
+                <viewController id="ciy-Bl-9bw" customClass="PieChartViewController" customModule="PUProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cvf-32-gBN"/>
+                        <viewControllerLayoutGuide type="bottom" id="DcQ-OI-UvB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DM9-lE-vGe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIA-lk-LLa" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="72" width="375" height="546"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RIA-lk-LLa" firstAttribute="leading" secondItem="DM9-lE-vGe" secondAttribute="leading" id="4oI-a6-0Gc"/>
+                            <constraint firstAttribute="trailing" secondItem="RIA-lk-LLa" secondAttribute="trailing" id="KtR-YF-9XC"/>
+                            <constraint firstItem="DcQ-OI-UvB" firstAttribute="top" secondItem="RIA-lk-LLa" secondAttribute="bottom" id="h8t-eV-e9k"/>
+                            <constraint firstItem="RIA-lk-LLa" firstAttribute="top" secondItem="cvf-32-gBN" secondAttribute="bottom" constant="8" id="qAT-yr-KCW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="iXI-qt-rdP">
+                        <barButtonItem key="leftBarButtonItem" image="Side_menu_2" id="Vfa-h6-jtm"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="menuButton" destination="Vfa-h6-jtm" id="bFR-DO-JFN"/>
+                        <outlet property="pieChartView" destination="RIA-lk-LLa" id="hGW-tD-tar"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tY8-R2-7Wd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9028" y="1055.6221889055473"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="N46-rS-Rst">
@@ -501,26 +575,42 @@
                     <view key="view" contentMode="scaleToFill" id="WlJ-qu-Sao">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14p-f2-dC0" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="72" width="375" height="546"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="14p-f2-dC0" secondAttribute="trailing" id="2c1-Vs-mXr"/>
+                            <constraint firstItem="14p-f2-dC0" firstAttribute="leading" secondItem="WlJ-qu-Sao" secondAttribute="leading" id="5HR-Kz-UtW"/>
+                            <constraint firstItem="w62-YE-kyn" firstAttribute="top" secondItem="14p-f2-dC0" secondAttribute="bottom" id="6CD-BX-MQY"/>
+                            <constraint firstItem="14p-f2-dC0" firstAttribute="top" secondItem="23k-wR-Cc7" secondAttribute="bottom" constant="8" id="jCc-Eq-VR6"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="fa8-TF-csR"/>
                     <navigationItem key="navigationItem" id="tAp-fq-IUl">
                         <barButtonItem key="leftBarButtonItem" image="Side_menu_2" id="8nE-TD-AGa"/>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="barChartView" destination="14p-f2-dC0" id="MmV-hE-aeb"/>
                         <outlet property="menuButton" destination="8nE-TD-AGa" id="uRv-Fv-FgP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pzh-kk-84o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9182" y="-45"/>
+            <point key="canvasLocation" x="9028" y="-401"/>
         </scene>
         <!--Ratings-->
         <scene sceneID="dg1-af-19j">
             <objects>
                 <navigationController id="1Mg-Vz-VNA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Ratings" id="Pyv-m5-sdH"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Gdd-lX-IHc">
+                    <tabBarItem key="tabBarItem" title="Ratings" image="Barchart_icon_s" id="Pyv-m5-sdH"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gdd-lX-IHc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.70588235290000001" green="0.7725490196" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -531,7 +621,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qg-UA-CYv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8265" y="-44"/>
+            <point key="canvasLocation" x="8265" y="-400"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ihR-Pr-0si">
@@ -545,6 +635,7 @@
                     <connections>
                         <segue destination="1Mg-Vz-VNA" kind="relationship" relationship="viewControllers" id="Fx1-QX-Aan"/>
                         <segue destination="Lf1-h3-SUT" kind="relationship" relationship="viewControllers" id="eqd-zk-xsy"/>
+                        <segue destination="lZc-D9-F1b" kind="relationship" relationship="viewControllers" id="2Sx-7V-9fw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bs9-aK-vcW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -580,17 +671,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Div statistikk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQv-dI-htr">
-                                <rect key="frame" x="104.5" y="317.5" width="167.5" height="33.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGU-jJ-iGU" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="72" width="375" height="587"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KQv-dI-htr" firstAttribute="centerX" secondItem="GO9-Wb-Ivb" secondAttribute="centerX" id="CcX-c6-J41"/>
-                            <constraint firstItem="KQv-dI-htr" firstAttribute="centerY" secondItem="GO9-Wb-Ivb" secondAttribute="centerY" id="jxx-qv-eSU"/>
+                            <constraint firstItem="QGU-jJ-iGU" firstAttribute="top" secondItem="Kld-sW-CDd" secondAttribute="bottom" constant="8" id="4L2-3q-SPY"/>
+                            <constraint firstItem="QGU-jJ-iGU" firstAttribute="leading" secondItem="GO9-Wb-Ivb" secondAttribute="leading" id="65K-U0-iea"/>
+                            <constraint firstAttribute="trailing" secondItem="QGU-jJ-iGU" secondAttribute="trailing" id="rej-eJ-cHM"/>
+                            <constraint firstItem="i5z-3G-5nW" firstAttribute="top" secondItem="QGU-jJ-iGU" secondAttribute="bottom" constant="8" id="rsM-Ei-SbI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="k51-eM-Yho">
@@ -602,7 +693,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="lineChartView" destination="QGU-jJ-iGU" id="HsF-gK-vu0"/>
                         <outlet property="logoutButton" destination="ETD-Q3-hem" id="p8h-Wi-Hri"/>
                         <outlet property="menuButton" destination="Dpu-EO-rWH" id="MAz-wm-AbC"/>
                         <segue destination="wH8-0Z-sLD" kind="presentation" identifier="segue_logout_from_subject" id="Xkk-Vv-HYI"/>
@@ -610,13 +703,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nre-gw-Clj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6046" y="-702"/>
+            <point key="canvasLocation" x="6045.6000000000004" y="-702.09895052473769"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Barchart_icon" width="30" height="30"/>
+        <image name="Barchart_icon_s" width="30" height="30"/>
         <image name="Book_vector" width="31" height="30"/>
         <image name="Overview_icon" width="26" height="33"/>
         <image name="Pen_vector" width="32" height="32"/>
+        <image name="Piechart_vector" width="32" height="32"/>
         <image name="Side_menu_2" width="26" height="13"/>
     </resources>
     <inferredMetricsTieBreakers>
