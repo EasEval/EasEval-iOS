@@ -56,7 +56,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             self.performSegue(withIdentifier: "segue_to_subjects", sender: self)
             //logInUser(name: name, password: password)
-            //Test comment
         }
         
     }

@@ -477,7 +477,7 @@
             <objects>
                 <navigationController id="Lf1-h3-SUT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Amount" id="nvX-iH-oN7"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b8L-lK-5J9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="b8L-lK-5J9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.70588235290000001" green="0.7725490196" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -520,7 +520,7 @@
             <objects>
                 <navigationController id="1Mg-Vz-VNA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Ratings" id="Pyv-m5-sdH"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gdd-lX-IHc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Gdd-lX-IHc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.70588235290000001" green="0.7725490196" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
