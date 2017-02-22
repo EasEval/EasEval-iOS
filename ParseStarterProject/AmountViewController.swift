@@ -1,20 +1,16 @@
 //
-//  SubjectMainPageViewController.swift
+//  AmountViewController.swift
 //  PUProject
 //
-//  Created by August Lund Eilertsen on 15.02.2017.
+//  Created by August Lund Eilertsen on 22.02.2017.
 //  Copyright © 2017 Parse. All rights reserved.
 //
 
 import UIKit
-import Parse
 
-var current_subject:Subject? = nil
-
-class SubjectMainPageViewController: UIViewController {
+class AmountViewController: UIViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
-    @IBOutlet var logoutButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,22 +21,8 @@ class SubjectMainPageViewController: UIViewController {
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        self.title = subjectList[selectedSubject].getId()
-        current_subject = subjectList[selectedSubject]
     }
 
-    @IBAction func logout(_ sender: Any) {
-        
-        PFUser.logOut()
-        let currentUser = PFUser.current()
-        if currentUser == nil {
-            
-            print("Logout succeeded")
-        }
-        
-        self.performSegue(withIdentifier: "segue_logout_from_subject", sender: self)
-        
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
