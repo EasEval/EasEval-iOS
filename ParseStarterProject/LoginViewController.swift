@@ -32,6 +32,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             if user != nil {
                 
+                UserDefaults.standard.set(name, forKey: "NAME")
+                UserDefaults.standard.set(password, forKey: "PASSWORD")
                 self.performSegue(withIdentifier: "segue_to_subjects", sender: self)
                 
             } else {
@@ -46,6 +48,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let name = UserDefaults.standard.value(forKey: "NAME") as? String
+        let password = UserDefaults.standard.value(forKey: "PASSWORD") as? String
+        
+        if name != nil && password != nil {
+            
+            textFieldName.text = name
+            textFieldPassword.text = password
+        }
         
         self.buttonLogin.layer.cornerRadius = self.buttonLogin.frame.size.width/2
         self.buttonLogin.layer.borderWidth = 0.5

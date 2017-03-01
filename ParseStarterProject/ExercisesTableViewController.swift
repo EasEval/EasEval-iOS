@@ -36,21 +36,29 @@ class ExercisesTableViewController: UITableViewController {
        
         //exQuery.whereKey("SUBJECTID", matchesKey: "ID", in: subQuery)
         exQuery.whereKey("SUBJECTID", equalTo: current_subject!.getId())
-        
+        exQuery.addAscendingOrder("NAME")
         exQuery.findObjectsInBackground { (objects, error) in
             
             if error == nil {
              
                 if let objects = objects {
                     
+                    var checkList = [String]()
                     for object in objects {
                         
                         let id = object.objectId
                         let name = object["NAME"] as! String
                         let subID = object["SUBJECTID"] as! String
                         
-                        let newExercise = Exercise(id: id!, name: name, subId: subID)
-                        self.exercisesList.append(newExercise)
+                        if !checkList.contains(name) {
+                            
+                            let newExercise = Exercise(id: id!, name: name, subId: subID)
+                            self.exercisesList.append(newExercise)
+                            // Add all values to each exercise
+                            checkList.append(name)
+                        }
+                    
+                        
                     }
                     
                     self.tableView.reloadData()

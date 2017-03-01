@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import Parse
 
 class PieChartViewController: UIViewController {
 
@@ -23,6 +24,21 @@ class PieChartViewController: UIViewController {
             menuButton.target = revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+        
+        let query = PFQuery(className: "Exercises")
+        query.findObjectsInBackground { (objects, error) in
+            
+            if error == nil {
+                
+                if let objects = objects {
+                    
+                    for object in objects {
+                        
+                        print(object["NAME"] as! String)
+                    }
+                }
+            }
         }
         
         let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
@@ -41,7 +57,8 @@ class PieChartViewController: UIViewController {
             dataEntries.append(dataEntry)
         }
         
-        let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "Units Sold")
+        let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "")
+        //pieChartDataSet.setValuesForKeys(testDict)
         let pieChartData = PieChartData()
         pieChartData.addDataSet(pieChartDataSet)
         pieChartView.data = pieChartData
@@ -61,6 +78,7 @@ class PieChartViewController: UIViewController {
         pieChartDataSet.colors = colors
         
         pieChartView.centerText = "Resources used"
+        pieChartView.chartDescription?.text = "Beskrivelse av ett eller annet"
         //pieChartView.legend.
         //pieChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dataPoints)
         //Also, you probably we want to add:

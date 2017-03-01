@@ -12,11 +12,13 @@ class Subject {
     
     let id:String
     let name:String
+    let objectId:String
     
-    public init(id:String, name:String) {
+    public init(id:String, name:String, objectId:String) {
         
         self.id = id
         self.name = name
+        self.objectId = objectId
     }
     
     func getId() -> String {
@@ -28,6 +30,12 @@ class Subject {
         
         return self.name
     }
+    
+    func getObjectId() -> String {
+        
+        return self.objectId
+    }
+
     
     
 }

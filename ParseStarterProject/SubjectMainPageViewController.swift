@@ -32,37 +32,96 @@ class SubjectMainPageViewController: UIViewController {
         current_subject = subjectList[selectedSubject]
         
         
-        let months = ["O1", "O2", "O3", "O4", "O5","O6"]
+        var exercises_names = [String]()
+        var exercises_values = [Double]()
+        var chartValues = [String(): (Double(), Double())]
         
-        let dollars1 = [10.0,20.0,15.0,30.0, 10.0, 17.0]
+        let query = PFQuery(className: "Exercises")
+        //let subjectObject = PFObject(className: "Subjects")
+        //query.includeKey("SUBJECT")
+        //query.whereKey("SUBJECT", equalTo: subjectObject ?? 0)
+        query.whereKey("SUBJECTID", equalTo: current_subject?.getId() ?? "")
+        query.addAscendingOrder("NAME")
         
-        setChart(dataPoints: months, values: dollars1)
+        query.findObjectsInBackground { (objects, error) in
+            
+            if error == nil && objects!.count > 0 {
+                
+                if let objects = objects {
+                    
+                    for object in objects {
+                        
+                        let key = object["NAME"] as! String
+                        let rating = object["rating"] as! Double
+                        
+                        if !exercises_names.contains(key) {
+                         
+                            exercises_names.append(key)
+                        }
+                        
+                        if !chartValues.keys.contains(key) {
+                            
+                            chartValues[key] = (rating, 1)
+                        } else {
+                            
+                            chartValues[key]!.0 += rating
+                            chartValues[key]!.1 += 1
+                        }
+                    }
+                    
+                    for name in exercises_names {
+                        
+                        let value = (chartValues[name]!.0)/(chartValues[name]!.1)
+                        exercises_values.append(value)
+                    }
+                    self.setChart(dataPoints: exercises_names, values: exercises_values)
+                    
+                }
+            }
+        }
+        
+        //setChart(dataPoints: months, values: dollars1)
     }
     
     func setChart(dataPoints:[String], values:[Double]) {
         
         var dataEntries: [BarChartDataEntry] = []
-        
+        var colors_chart = [UIColor]()
         for i in 0..<dataPoints.count {
             let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
             dataEntry.accessibilityLabel = "Test"
             dataEntries.append(dataEntry)
+            colors_chart.append(getRandomColor())
         }
         
         let chartDataSet = LineChartDataSet(values: dataEntries, label: "Exercises")
-        let chartData = LineChartData()
         
+        chartDataSet.colors = colors_chart
+        //chartDataSet.colors = ChartColorTemplates.colorful()
+        
+        let chartData = LineChartData()
         chartData.addDataSet(chartDataSet)
         
         lineChartView.data = chartData
-        //lineChartView.
+        
         lineChartView.animate(xAxisDuration: 1.5, yAxisDuration: 1.5)
         lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dataPoints)
-        //Also, you probably we want to add:
-        
+        lineChartView.chartDescription?.text = "Student ratings of the exercises"
+    
         lineChartView.xAxis.granularity = 1
+        lineChartView.backgroundColor = UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 0.4)
     }
 
+    func getRandomColor() -> UIColor {
+        
+        let red = Double(arc4random_uniform(256))
+        let green = Double(arc4random_uniform(256))
+        let blue = Double(arc4random_uniform(256))
+        
+        let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
+        return color
+        
+    }
 
     @IBAction func logout(_ sender: Any) {
         

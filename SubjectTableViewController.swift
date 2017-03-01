@@ -24,7 +24,7 @@ class SubjectTableViewController: UITableViewController {
         let currentUser = PFUser.current()
         if currentUser == nil {
             
-            print("Logout succeed")
+            print("Logout succeeded")
         }
         self.performSegue(withIdentifier: "segue_logout_from_subjects", sender: self)
     }
@@ -33,8 +33,10 @@ class SubjectTableViewController: UITableViewController {
         
         startActivityIndicator()
         
-        let subjectQuery = PFQuery(className: "Subjects")
-        subjectQuery.findObjectsInBackground { (objects, error) in
+        let hasSubjectQuery = PFQuery(className: "HasSubject")
+        hasSubjectQuery.whereKey("USERID", equalTo: PFUser.current() ?? 0)
+        hasSubjectQuery.includeKey("SUBCODE")
+        hasSubjectQuery.findObjectsInBackground { (objects, error) in
             
             if error == nil {
                 subjectList.removeAll()
@@ -42,10 +44,15 @@ class SubjectTableViewController: UITableViewController {
                     
                     for object in objects {
                         
-                        let subjectId = object["ID"] as! String
-                        let subjectName = object["NAME"] as! String
-                        let newSubject = Subject(id: subjectId, name: subjectName)
-                        subjectList.append(newSubject)
+                        
+                        if let subject = object["SUBCODE"] as? PFObject {
+                            
+                            let subjectId = subject["ID"] as! String
+                            let subjectName = subject["NAME"] as! String
+                            let objectId = subject.objectId!
+                            let newSubject = Subject(id: subjectId, name: subjectName, objectId: objectId)
+                            subjectList.append(newSubject)
+                        }
                     }
                 }
                 self.stopActivityIndicator()
