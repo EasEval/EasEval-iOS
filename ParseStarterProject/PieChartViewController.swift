@@ -60,6 +60,12 @@ class PieChartViewController: UIViewController {
         
         pieChartDataSet.colors = colors
         
+        pieChartView.centerText = "Resources used"
+        //pieChartView.legend.
+        //pieChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dataPoints)
+        //Also, you probably we want to add:
+        
+        //pieChartView.xAxis.granularity = 1
         
         //let lineChartDataSet = LineChartDataSet(yVals: dataEntries, label: "Units Sold")
         //let lineChartData = LineChartData(xVals: dataPoints, dataSet: lineChartDataSet)

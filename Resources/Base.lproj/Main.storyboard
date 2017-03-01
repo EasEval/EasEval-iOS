@@ -479,6 +479,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="barChartView" destination="a7U-9o-Wa8" id="cpw-wU-Wre"/>
                         <outlet property="menuButton" destination="MPr-1L-KLs" id="sW7-X5-xlE"/>
                     </connections>
                 </viewController>
@@ -672,16 +673,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGU-jJ-iGU" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="72" width="375" height="587"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="517"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QGU-jJ-iGU" firstAttribute="top" secondItem="Kld-sW-CDd" secondAttribute="bottom" constant="8" id="4L2-3q-SPY"/>
+                            <constraint firstItem="QGU-jJ-iGU" firstAttribute="top" secondItem="Kld-sW-CDd" secondAttribute="bottom" constant="44" id="4L2-3q-SPY"/>
                             <constraint firstItem="QGU-jJ-iGU" firstAttribute="leading" secondItem="GO9-Wb-Ivb" secondAttribute="leading" id="65K-U0-iea"/>
                             <constraint firstAttribute="trailing" secondItem="QGU-jJ-iGU" secondAttribute="trailing" id="rej-eJ-cHM"/>
-                            <constraint firstItem="i5z-3G-5nW" firstAttribute="top" secondItem="QGU-jJ-iGU" secondAttribute="bottom" constant="8" id="rsM-Ei-SbI"/>
+                            <constraint firstItem="i5z-3G-5nW" firstAttribute="top" secondItem="QGU-jJ-iGU" secondAttribute="bottom" constant="42" id="rsM-Ei-SbI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="k51-eM-Yho">
