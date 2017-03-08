@@ -20,4 +20,20 @@ class Utilities {
         
         view.present(alert, animated: true, completion: nil)
     }
+    
+    static func getRandomColor(divideNum:Double) -> UIColor {
+        
+        let red = Double(arc4random_uniform(256))
+        let green = Double(arc4random_uniform(256))
+        let blue = Double(arc4random_uniform(256))
+            
+        let color = UIColor(red: CGFloat(red/divideNum), green: CGFloat(green/divideNum), blue: CGFloat(blue/divideNum), alpha: 1)
+        return color
+        
+    }
+    
+    static func getRoundedDouble(double:Double) -> Double {
+        
+        return Double(round(10*double)/10)
+    }
 }

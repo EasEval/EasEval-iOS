@@ -8,7 +8,6 @@
 
 import UIKit
 import Charts
-import Parse
 
 class PieChartViewController: UIViewController {
 
@@ -26,25 +25,38 @@ class PieChartViewController: UIViewController {
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        let query = PFQuery(className: "Exercises")
-        query.findObjectsInBackground { (objects, error) in
-            
-            if error == nil {
-                
-                if let objects = objects {
-                    
-                    for object in objects {
-                        
-                        print(object["NAME"] as! String)
-                    }
-                }
-            }
-        }
+        self.navigationItem.title = current_exercise?.getName()
+
+        var dataDescriptionLabels = [String]()
+        var dataDescriptionPoints = [Double]()
         
-        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
-        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0]
+        let googleTuple = current_exercise!.getAmountFromKey(key: "googleAmount")
+        let solutionTuple = current_exercise!.getAmountFromKey(key: "solutionsAmount")
+        let curriculumTuple = current_exercise!.getAmountFromKey(key: "curriculumAmount")
+        let lectureTuple = current_exercise!.getAmountFromKey(key: "lectureAmount")
         
-        setChart(dataPoints: months, values: unitsSold)
+        let total = googleTuple.0/googleTuple.1 + solutionTuple.0/solutionTuple.1 + curriculumTuple.0/curriculumTuple.1 + lectureTuple.0/lectureTuple.1
+        
+        let googlePercentage = Utilities.getRoundedDouble(double: ((googleTuple.0/googleTuple.1)/total) * 100)
+        let solutionPercentage = Utilities.getRoundedDouble(double:((solutionTuple.0/solutionTuple.1)/total) * 100)
+        let curriculumPercentage = Utilities.getRoundedDouble(double:((curriculumTuple.0/curriculumTuple.1)/total) * 100)
+        let lecturePercentage = Utilities.getRoundedDouble(double:((lectureTuple.0/lectureTuple.1)/total) * 100)
+        
+        
+        dataDescriptionLabels.append("Google Amount")
+        dataDescriptionPoints.append(googlePercentage)
+        
+        dataDescriptionLabels.append("Solutions Amount")
+        dataDescriptionPoints.append(solutionPercentage)
+        
+        dataDescriptionLabels.append("Curriculum Amount")
+        dataDescriptionPoints.append(curriculumPercentage)
+        
+        dataDescriptionLabels.append("Lecture Amount")
+        dataDescriptionPoints.append(lecturePercentage)
+        
+        
+        setChart(dataPoints: dataDescriptionLabels, values: dataDescriptionPoints)
         // Do any additional setup after loading the view.
     }
     
@@ -53,41 +65,41 @@ class PieChartViewController: UIViewController {
         var dataEntries: [ChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
-            let dataEntry = ChartDataEntry(x: Double(i), y: values[i])
+            
+            let dataEntry = PieChartDataEntry(value: values[i], label: dataPoints[i])
             dataEntries.append(dataEntry)
         }
         
         let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "")
-        //pieChartDataSet.setValuesForKeys(testDict)
+        pieChartDataSet.valueTextColor = UIColor.black
+        pieChartDataSet.label = ""
         let pieChartData = PieChartData()
         pieChartData.addDataSet(pieChartDataSet)
         pieChartView.data = pieChartData
+        
         pieChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
         
-        var colors: [UIColor] = []
+        var colors = [UIColor]()
         
-        for i in 0..<dataPoints.count {
-            let red = Double(arc4random_uniform(256))
-            let green = Double(arc4random_uniform(256))
-            let blue = Double(arc4random_uniform(256))
+        var rgbValues = [(80.0,247.0,218.0),(223.0,56.0,247.0),(208.0, 212.0, 5.0),(181.0, 207.0, 204.0)]
+        
+        let length = dataPoints.count
+        for i in 0..<length {
             
-            let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
+            let color = UIColor(red: CGFloat(rgbValues[i%length].0/255), green: CGFloat(rgbValues[i%length].1/255), blue: CGFloat(rgbValues[i%length].2/255), alpha: 1)
             colors.append(color)
+            //colors.append(Utilities.getRandomColor(divideNum: 255))
         }
         
         pieChartDataSet.colors = colors
+        //pieChartDataSet.colors = ChartColorTemplates.colorful()
         
-        pieChartView.centerText = "Resources used"
-        pieChartView.chartDescription?.text = "Beskrivelse av ett eller annet"
-        //pieChartView.legend.
-        //pieChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dataPoints)
-        //Also, you probably we want to add:
+        pieChartView.centerText = "Percentage used %"
+        pieChartView.chartDescription?.text = "The percentage of different resources used by the students to solve the exercise"
+        pieChartView.legend.enabled = false
+        //pieChartView.backgroundColor = UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 0.4)
         
-        //pieChartView.xAxis.granularity = 1
         
-        //let lineChartDataSet = LineChartDataSet(yVals: dataEntries, label: "Units Sold")
-        //let lineChartData = LineChartData(xVals: dataPoints, dataSet: lineChartDataSet)
-        //lineChartView.data = lineChartData
         
     }
 

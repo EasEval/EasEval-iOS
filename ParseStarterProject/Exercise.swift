@@ -13,14 +13,15 @@ class Exercise {
     let id:String
     let name:String
     let subjectId:String
-    var amounts = [String(): (Double(), Double())]
+    var amounts = [String: (Double, Double)]()
+    var mostUsedResource = [String: Int]()
     
     public init(id:String, name:String, subId:String) {
         
         self.id = id
         self.name = name
         self.subjectId = subId
-        self.amounts = [String(): (Double(), Double())]
+        //self.amounts = [String(): (Double(), Double())]
     }
     
     func getId() -> String {
@@ -66,7 +67,7 @@ class Exercise {
         
         if !amountHasKey(key: key) {
             
-            self.amounts[key]! = (amount, 1)
+            self.amounts[key] = (amount, 1)
         } else {
             
             self.amounts[key]!.0 += amount
@@ -75,5 +76,39 @@ class Exercise {
         }
     }
     
+    private func resourceHasKey(key:String) -> Bool {
+        
+        if(self.mostUsedResource.keys.contains(key)) {
+            
+            return true
+        }
+        return false
+    }
+    
+    func addMostUsedResourceForKey(key:String) {
+        
+        if(!self.resourceHasKey(key:key)) {
+            
+            self.mostUsedResource[key] = 1
+            
+        } else {
+            
+            self.mostUsedResource[key]! += 1
+        }
+    }
+    
+    func getMostUsedResourceFromKey(key:String) -> Int {
+        
+        if(resourceHasKey(key: key)) {
+            
+            return self.mostUsedResource[key]!
+        }
+        return 0
+    }
+    
+    func getMostUsedResources() -> [String: Int] {
+    
+        return self.mostUsedResource
+    }
     
 }

@@ -487,11 +487,11 @@
             </objects>
             <point key="canvasLocation" x="9028" y="314"/>
         </scene>
-        <!--Amount-->
+        <!--Amounts-->
         <scene sceneID="QO5-nD-SOU">
             <objects>
                 <navigationController id="Lf1-h3-SUT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Amount" image="Barchart_icon" id="nvX-iH-oN7"/>
+                    <tabBarItem key="tabBarItem" title="Amounts" image="Barchart_icon" id="nvX-iH-oN7"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="b8L-lK-5J9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -506,11 +506,11 @@
             </objects>
             <point key="canvasLocation" x="8265" y="313"/>
         </scene>
-        <!--Title-->
+        <!--Resources used-->
         <scene sceneID="fee-HO-b6y">
             <objects>
                 <navigationController id="lZc-D9-F1b" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Title" image="Piechart_vector" id="OlG-VC-qWJ"/>
+                    <tabBarItem key="tabBarItem" title="Resources used" image="Piechart_vector" id="OlG-VC-qWJ"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wkb-9h-eOb">
@@ -539,16 +539,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIA-lk-LLa" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="72" width="375" height="546"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="90" width="375" height="528"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="RIA-lk-LLa" firstAttribute="leading" secondItem="DM9-lE-vGe" secondAttribute="leading" id="4oI-a6-0Gc"/>
                             <constraint firstAttribute="trailing" secondItem="RIA-lk-LLa" secondAttribute="trailing" id="KtR-YF-9XC"/>
                             <constraint firstItem="DcQ-OI-UvB" firstAttribute="top" secondItem="RIA-lk-LLa" secondAttribute="bottom" id="h8t-eV-e9k"/>
-                            <constraint firstItem="RIA-lk-LLa" firstAttribute="top" secondItem="cvf-32-gBN" secondAttribute="bottom" constant="8" id="qAT-yr-KCW"/>
+                            <constraint firstItem="RIA-lk-LLa" firstAttribute="top" secondItem="cvf-32-gBN" secondAttribute="bottom" constant="26" id="qAT-yr-KCW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iXI-qt-rdP">
@@ -634,9 +634,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="1Mg-Vz-VNA" kind="relationship" relationship="viewControllers" id="Fx1-QX-Aan"/>
-                        <segue destination="Lf1-h3-SUT" kind="relationship" relationship="viewControllers" id="eqd-zk-xsy"/>
                         <segue destination="lZc-D9-F1b" kind="relationship" relationship="viewControllers" id="2Sx-7V-9fw"/>
+                        <segue destination="Lf1-h3-SUT" kind="relationship" relationship="viewControllers" id="eqd-zk-xsy"/>
+                        <segue destination="1Mg-Vz-VNA" kind="relationship" relationship="viewControllers" id="Fx1-QX-Aan"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bs9-aK-vcW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -673,16 +673,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGU-jJ-iGU" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="108" width="375" height="517"/>
+                                <rect key="frame" x="0.0" y="115" width="375" height="552"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UO9-Y9-Bc3">
+                                <rect key="frame" x="88" y="79" width="198" height="29"/>
+                                <segments>
+                                    <segment title="Ratings"/>
+                                    <segment title="Time spent"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeSegmentValue:" destination="uJ5-8M-Njd" eventType="valueChanged" id="lWI-4h-PBe"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QGU-jJ-iGU" firstAttribute="top" secondItem="Kld-sW-CDd" secondAttribute="bottom" constant="44" id="4L2-3q-SPY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UO9-Y9-Bc3" secondAttribute="trailing" constant="73" id="1eP-di-X8D"/>
+                            <constraint firstItem="UO9-Y9-Bc3" firstAttribute="top" secondItem="Kld-sW-CDd" secondAttribute="bottom" constant="15" id="3YL-p2-gps"/>
+                            <constraint firstItem="QGU-jJ-iGU" firstAttribute="top" secondItem="Kld-sW-CDd" secondAttribute="bottom" constant="51" id="4L2-3q-SPY"/>
                             <constraint firstItem="QGU-jJ-iGU" firstAttribute="leading" secondItem="GO9-Wb-Ivb" secondAttribute="leading" id="65K-U0-iea"/>
+                            <constraint firstItem="UO9-Y9-Bc3" firstAttribute="leading" secondItem="GO9-Wb-Ivb" secondAttribute="leadingMargin" constant="72" id="FgU-y3-cU6"/>
                             <constraint firstAttribute="trailing" secondItem="QGU-jJ-iGU" secondAttribute="trailing" id="rej-eJ-cHM"/>
-                            <constraint firstItem="i5z-3G-5nW" firstAttribute="top" secondItem="QGU-jJ-iGU" secondAttribute="bottom" constant="42" id="rsM-Ei-SbI"/>
+                            <constraint firstItem="i5z-3G-5nW" firstAttribute="top" secondItem="QGU-jJ-iGU" secondAttribute="bottom" id="rsM-Ei-SbI"/>
+                            <constraint firstItem="QGU-jJ-iGU" firstAttribute="top" secondItem="UO9-Y9-Bc3" secondAttribute="bottom" constant="8" id="s7b-aC-kiW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="k51-eM-Yho">
@@ -699,6 +713,7 @@
                         <outlet property="lineChartView" destination="QGU-jJ-iGU" id="HsF-gK-vu0"/>
                         <outlet property="logoutButton" destination="ETD-Q3-hem" id="p8h-Wi-Hri"/>
                         <outlet property="menuButton" destination="Dpu-EO-rWH" id="MAz-wm-AbC"/>
+                        <outlet property="segmentedControl" destination="UO9-Y9-Bc3" id="GRR-3i-WOZ"/>
                         <segue destination="wH8-0Z-sLD" kind="presentation" identifier="segue_logout_from_subject" id="Xkk-Vv-HYI"/>
                     </connections>
                 </viewController>

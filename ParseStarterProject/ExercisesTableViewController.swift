@@ -7,14 +7,12 @@
 //
 
 import UIKit
-import Parse
 
 var current_exercise:Exercise? = nil
 
 class ExercisesTableViewController: UITableViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
-    var exercisesList = [Exercise]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,52 +24,9 @@ class ExercisesTableViewController: UITableViewController {
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         self.title = current_subject?.getId()
-        getExercises()
 
     }
     
-    func getExercises() {
-        
-        let exQuery = PFQuery(className: "Exercises")
-       
-        //exQuery.whereKey("SUBJECTID", matchesKey: "ID", in: subQuery)
-        exQuery.whereKey("SUBJECTID", equalTo: current_subject!.getId())
-        exQuery.addAscendingOrder("NAME")
-        exQuery.findObjectsInBackground { (objects, error) in
-            
-            if error == nil {
-             
-                if let objects = objects {
-                    
-                    var checkList = [String]()
-                    for object in objects {
-                        
-                        let id = object.objectId
-                        let name = object["NAME"] as! String
-                        let subID = object["SUBJECTID"] as! String
-                        
-                        if !checkList.contains(name) {
-                            
-                            let newExercise = Exercise(id: id!, name: name, subId: subID)
-                            self.exercisesList.append(newExercise)
-                            // Add all values to each exercise
-                            checkList.append(name)
-                        }
-                    
-                        
-                    }
-                    
-                    self.tableView.reloadData()
-                }
-            } else {
-                
-                
-            }
-        }
-        
-        
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -86,21 +41,23 @@ class ExercisesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return exercisesList.count
+        return exercises_list.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell_ex", for: indexPath)
 
-        cell.textLabel?.text = exercisesList[indexPath.row].getName()
+        cell.textLabel?.text = exercises_list[indexPath.row].getName()
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        current_exercise = exercisesList[indexPath.row]
+        current_exercise = exercises_list[indexPath.row]
+        print(current_exercise?.getAmounts()["googleAmount"]?.0 ?? 0)
+        print(current_exercise?.getAmounts()["googleAmount"]?.1 ?? 0)
         self.performSegue(withIdentifier: "segue_to_exercise", sender: self)
     }
 

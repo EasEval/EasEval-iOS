@@ -26,6 +26,8 @@ class RatingViewController: UIViewController {
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        self.navigationItem.title = current_exercise?.getName()
+        
         let months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "August", "Sept", "Oct", "Nov", "Dec"]
         
         let dollars1 = [10.0,20.0,15.0,30.0,40.0,41.0,5.0,10,12,15,13,50]

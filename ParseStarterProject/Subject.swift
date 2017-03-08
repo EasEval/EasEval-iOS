@@ -13,6 +13,7 @@ class Subject {
     let id:String
     let name:String
     let objectId:String
+    var exercises = [String: Exercise]()
     
     public init(id:String, name:String, objectId:String) {
         
@@ -35,7 +36,14 @@ class Subject {
         
         return self.objectId
     }
-
     
+    func getExercises() -> [String: Exercise] {
+        
+        return self.exercises
+    }
     
+    func setExerciseForKey(key:String, exer:Exercise) {
+        
+        self.exercises[key] = exer
+    }
 }

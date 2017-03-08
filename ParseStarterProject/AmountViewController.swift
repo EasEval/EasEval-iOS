@@ -14,9 +14,13 @@ class AmountViewController: UIViewController {
     @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet var barChartView: BarChartView!
     
+    var viewDidLoadProperly = false
+    var chartSetUpCompleted = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = current_exercise?.getName()
         if revealViewController() != nil {
             
             menuButton.target = revealViewController()
@@ -24,11 +28,17 @@ class AmountViewController: UIViewController {
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        let months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "August", "Sept", "Oct", "Nov", "Dec"]
+        var dataPointValues = [Double]()
+        var dataPointLabels = [String]()
         
-        let dollars1 = [2.0,20.0,9.0,45.0,13.0,30.0,5.0,20,12,15,13,24]
+        for key in (current_exercise?.getMostUsedResources().keys)! {
+            
+            dataPointValues.append(Double(current_exercise!.getMostUsedResourceFromKey(key: key)))
+            dataPointLabels.append(key)
+        }
         
-        setChart(dataPoints: months, values: dollars1)
+        setChart(dataPoints: dataPointLabels, values: dataPointValues)
+        viewDidLoadProperly = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,17 +67,7 @@ class AmountViewController: UIViewController {
         //Also, you probably we want to add:
         
         barChartView.xAxis.granularity = 1
+        chartSetUpCompleted = true
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

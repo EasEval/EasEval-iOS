@@ -11,13 +11,16 @@ import Parse
 import Charts
 
 var current_subject:Subject? = nil
+var exercises_list = [Exercise]()
 
 class SubjectMainPageViewController: UIViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet var logoutButton: UIBarButtonItem!
     @IBOutlet var lineChartView: LineChartView!
+    @IBOutlet var segmentedControl: UISegmentedControl!
     
+    var exercisesNameList = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +33,6 @@ class SubjectMainPageViewController: UIViewController {
         }
         self.title = subjectList[selectedSubject].getId()
         current_subject = subjectList[selectedSubject]
-        
-        
-        var exercises_names = [String]()
-        var exercises_values = [Double]()
-        var chartValues = [String(): (Double(), Double())]
         
         let query = PFQuery(className: "Exercises")
         //let subjectObject = PFObject(className: "Subjects")
@@ -49,38 +47,68 @@ class SubjectMainPageViewController: UIViewController {
                 
                 if let objects = objects {
                     
+                    exercises_list.removeAll()
+                    self.exercisesNameList.removeAll()
                     for object in objects {
                         
-                        let key = object["NAME"] as! String
+                        let name = object["NAME"] as! String
+                        let id = object.objectId
+                        let subID = object["SUBJECTID"] as! String
+                        
+                        let time = object["time"] as! Double
                         let rating = object["rating"] as! Double
+                        let googleAmount = object["googleAmount"] as! Double
+                        let solutionsAmount = object["solutionsAmount"] as! Double
+                        let curriculumAmount = object["curriculumAmount"] as! Double
+                        let lectureAmount = object["lectureAmount"] as! Double
                         
-                        if !exercises_names.contains(key) {
-                         
-                            exercises_names.append(key)
-                        }
+                        let maxValList = [googleAmount, solutionsAmount, curriculumAmount, lectureAmount]
+                        let maxValNames = ["googleAmount","solutionsAmount","curriculumAmount","lectureAmount"]
                         
-                        if !chartValues.keys.contains(key) {
+                        let maxIndex = maxValList.index(of: maxValList.max()!)
+                        let keyMax = maxValNames[maxIndex!]
+                        
+                        
+                        if !self.exercisesNameList.contains(name) {
                             
-                            chartValues[key] = (rating, 1)
-                        } else {
+                            let newExercise = Exercise(id: id!, name: name, subId: subID)
+                            exercises_list.append(newExercise)
                             
-                            chartValues[key]!.0 += rating
-                            chartValues[key]!.1 += 1
+                            self.exercisesNameList.append(name)
                         }
+                        let indexToAddValue = self.exercisesNameList.index(of: name)!
+                        exercises_list[indexToAddValue].addAmountForKey(key: "googleAmount", amount: googleAmount)
+                        exercises_list[indexToAddValue].addAmountForKey(key: "solutionsAmount", amount: solutionsAmount)
+                        exercises_list[indexToAddValue].addAmountForKey(key: "curriculumAmount", amount: curriculumAmount)
+                        exercises_list[indexToAddValue].addAmountForKey(key: "lectureAmount", amount: lectureAmount)
+                        exercises_list[indexToAddValue].addAmountForKey(key: "rating", amount: rating)
+                        exercises_list[indexToAddValue].addAmountForKey(key: "time", amount: time)
+                        
+                        exercises_list[indexToAddValue].addMostUsedResourceForKey(key: keyMax)
+                        
+                        self.updateChartWithAmount(amount: "rating", description: "Student ratings of the exercises")
+                        
                     }
                     
-                    for name in exercises_names {
-                        
-                        let value = (chartValues[name]!.0)/(chartValues[name]!.1)
-                        exercises_values.append(value)
-                    }
-                    self.setChart(dataPoints: exercises_names, values: exercises_values)
                     
                 }
             }
         }
         
         //setChart(dataPoints: months, values: dollars1)
+    }
+    
+    func updateChartWithAmount(amount:String, description:String) {
+        
+        var exercises_values = [Double]()
+        for checkName in exercisesNameList {
+            
+            let indexToAddValue2 = exercisesNameList.index(of: checkName)!
+            let val = exercises_list[indexToAddValue2].getAmountFromKey(key: amount).0/exercises_list[indexToAddValue2].getAmountFromKey(key: amount).1
+            exercises_values.append(val)
+        }
+        self.setChart(dataPoints: exercisesNameList, values: exercises_values)
+        lineChartView.chartDescription?.text = description
     }
     
     func setChart(dataPoints:[String], values:[Double]) {
@@ -91,7 +119,7 @@ class SubjectMainPageViewController: UIViewController {
             let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
             dataEntry.accessibilityLabel = "Test"
             dataEntries.append(dataEntry)
-            colors_chart.append(getRandomColor())
+            colors_chart.append(Utilities.getRandomColor(divideNum: 255))
         }
         
         let chartDataSet = LineChartDataSet(values: dataEntries, label: "Exercises")
@@ -106,21 +134,26 @@ class SubjectMainPageViewController: UIViewController {
         
         lineChartView.animate(xAxisDuration: 1.5, yAxisDuration: 1.5)
         lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dataPoints)
-        lineChartView.chartDescription?.text = "Student ratings of the exercises"
-    
         lineChartView.xAxis.granularity = 1
         lineChartView.backgroundColor = UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 0.4)
     }
 
-    func getRandomColor() -> UIColor {
+    @IBAction func changeSegmentValue(_ sender: Any) {
         
-        let red = Double(arc4random_uniform(256))
-        let green = Double(arc4random_uniform(256))
-        let blue = Double(arc4random_uniform(256))
-        
-        let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
-        return color
-        
+        switch segmentedControl.selectedSegmentIndex {
+            
+        case 0:
+            
+            self.updateChartWithAmount(amount: "rating", description: "Student ratings of the exercises")
+            
+        case 1:
+            
+            self.updateChartWithAmount(amount: "time",description: "Time students spent on the exercises")
+            
+        default:
+            break
+        }
+
     }
 
     @IBAction func logout(_ sender: Any) {
