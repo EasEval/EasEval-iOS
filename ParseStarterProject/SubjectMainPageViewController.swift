@@ -20,6 +20,8 @@ class SubjectMainPageViewController: UIViewController {
     @IBOutlet var lineChartView: LineChartView!
     @IBOutlet var segmentedControl: UISegmentedControl!
     
+    var activityIndicator = UIActivityIndicatorView()
+    
     var exercisesNameList = [String]()
     
     override func viewDidLoad() {
@@ -34,12 +36,24 @@ class SubjectMainPageViewController: UIViewController {
         self.title = subjectList[selectedSubject].getId()
         current_subject = subjectList[selectedSubject]
         
-        let query = PFQuery(className: "Exercises")
         //let subjectObject = PFObject(className: "Subjects")
         //query.includeKey("SUBJECT")
         //query.whereKey("SUBJECT", equalTo: subjectObject ?? 0)
+        
+        let query = PFQuery(className: "Exercises")
         query.whereKey("SUBJECTID", equalTo: current_subject?.getId() ?? "")
         query.addAscendingOrder("NAME")
+        
+        
+        activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
+        activityIndicator.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        lineChartView.isHidden = true
         
         query.findObjectsInBackground { (objects, error) in
             
@@ -88,11 +102,19 @@ class SubjectMainPageViewController: UIViewController {
                         
                         self.updateChartWithAmount(amount: "rating", description: "Student ratings of the exercises")
                         
+                    
                     }
                     
-                    
                 }
+            } else {
+                
+                self.activityIndicator.stopAnimating()
+                UIApplication.shared.endIgnoringInteractionEvents()
+                self.lineChartView.isHidden = false
             }
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
+            self.lineChartView.isHidden = false
         }
         
         //setChart(dataPoints: months, values: dollars1)

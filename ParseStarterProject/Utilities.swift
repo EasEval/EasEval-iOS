@@ -34,6 +34,6 @@ class Utilities {
     
     static func getRoundedDouble(double:Double) -> Double {
         
-        return Double(round(10*double)/10)
+        return Double(round(100*double)/100)
     }
 }

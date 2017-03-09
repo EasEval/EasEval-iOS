@@ -30,11 +30,17 @@ class AmountViewController: UIViewController {
         
         var dataPointValues = [Double]()
         var dataPointLabels = [String]()
+        let rawKeys = ["googleAmount","solutionsAmount","curriculumAmount","lectureAmount"]
+        let labels = ["Google", "Solutions","Curriculum","Lectures"]
         
         for key in (current_exercise?.getMostUsedResources().keys)! {
             
             dataPointValues.append(Double(current_exercise!.getMostUsedResourceFromKey(key: key)))
-            dataPointLabels.append(key)
+            
+            let labelIndex = rawKeys.index(of: key)
+            dataPointLabels.append(labels[labelIndex!])
+            //dataPointLabels.append(key)
+            
         }
         
         setChart(dataPoints: dataPointLabels, values: dataPointValues)
@@ -48,8 +54,6 @@ class AmountViewController: UIViewController {
     
     func setChart(dataPoints:[String], values:[Double]) {
         
-        //var yValues : [ChartDataEntry] = [ChartDataEntry]()
-        
         var dataEntries: [BarChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
@@ -57,15 +61,14 @@ class AmountViewController: UIViewController {
             dataEntries.append(dataEntry)
         }
         
-        let chartDataSet = BarChartDataSet(values: dataEntries, label: "Units Sold")
+        let chartDataSet = BarChartDataSet(values: dataEntries, label: "Number of students who used a given resource the most")
         let chartData = BarChartData()
         chartData.addDataSet(chartDataSet)
         barChartView.data = chartData
         barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+        barChartView.chartDescription?.text = ""
         
         barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dataPoints)
-        //Also, you probably we want to add:
-        
         barChartView.xAxis.granularity = 1
         chartSetUpCompleted = true
     }

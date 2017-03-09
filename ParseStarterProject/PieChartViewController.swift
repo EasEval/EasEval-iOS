@@ -43,16 +43,16 @@ class PieChartViewController: UIViewController {
         let lecturePercentage = Utilities.getRoundedDouble(double:((lectureTuple.0/lectureTuple.1)/total) * 100)
         
         
-        dataDescriptionLabels.append("Google Amount")
+        dataDescriptionLabels.append("Google")
         dataDescriptionPoints.append(googlePercentage)
         
-        dataDescriptionLabels.append("Solutions Amount")
+        dataDescriptionLabels.append("Solutions")
         dataDescriptionPoints.append(solutionPercentage)
         
-        dataDescriptionLabels.append("Curriculum Amount")
+        dataDescriptionLabels.append("Curriculum")
         dataDescriptionPoints.append(curriculumPercentage)
         
-        dataDescriptionLabels.append("Lecture Amount")
+        dataDescriptionLabels.append("Lectures")
         dataDescriptionPoints.append(lecturePercentage)
         
         
