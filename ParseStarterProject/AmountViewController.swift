@@ -28,10 +28,20 @@ class AmountViewController: UIViewController {
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        loadDataIntoChart()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        //loadDataIntoChart()
+    }
+    
+    func loadDataIntoChart() {
+        
         var dataPointValues = [Double]()
         var dataPointLabels = [String]()
-        let rawKeys = ["googleAmount","solutionsAmount","curriculumAmount","lectureAmount"]
-        let labels = ["Google", "Solutions","Curriculum","Lectures"]
+        let rawKeys = ["googleAmount","solutionsAmount","curriculumAmount","lectureAmount", "otherAmount"]
+        let labels = ["Google", "Solutions","Curriculum","Lectures","Other"]
         
         for key in (current_exercise?.getMostUsedResources().keys)! {
             
@@ -45,6 +55,7 @@ class AmountViewController: UIViewController {
         
         setChart(dataPoints: dataPointLabels, values: dataPointValues)
         viewDidLoadProperly = true
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,6 +82,7 @@ class AmountViewController: UIViewController {
         barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dataPoints)
         barChartView.xAxis.granularity = 1
         chartSetUpCompleted = true
+        barChartView.xAxis.labelPosition = .bottom
     }
 
 }

@@ -27,6 +27,16 @@ class PieChartViewController: UIViewController {
         
         self.navigationItem.title = current_exercise?.getName()
 
+        loadDataIntoChart()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        //loadDataIntoChart()
+    }
+    
+    func loadDataIntoChart() {
+        
         var dataDescriptionLabels = [String]()
         var dataDescriptionPoints = [Double]()
         
@@ -34,14 +44,15 @@ class PieChartViewController: UIViewController {
         let solutionTuple = current_exercise!.getAmountFromKey(key: "solutionsAmount")
         let curriculumTuple = current_exercise!.getAmountFromKey(key: "curriculumAmount")
         let lectureTuple = current_exercise!.getAmountFromKey(key: "lectureAmount")
+        let otherTuple = current_exercise!.getAmountFromKey(key: "otherAmount")
         
-        let total = googleTuple.0/googleTuple.1 + solutionTuple.0/solutionTuple.1 + curriculumTuple.0/curriculumTuple.1 + lectureTuple.0/lectureTuple.1
+        let total = googleTuple.0/googleTuple.1 + solutionTuple.0/solutionTuple.1 + curriculumTuple.0/curriculumTuple.1 + lectureTuple.0/lectureTuple.1 + otherTuple.0/otherTuple.1
         
         let googlePercentage = Utilities.getRoundedDouble(double: ((googleTuple.0/googleTuple.1)/total) * 100)
         let solutionPercentage = Utilities.getRoundedDouble(double:((solutionTuple.0/solutionTuple.1)/total) * 100)
         let curriculumPercentage = Utilities.getRoundedDouble(double:((curriculumTuple.0/curriculumTuple.1)/total) * 100)
         let lecturePercentage = Utilities.getRoundedDouble(double:((lectureTuple.0/lectureTuple.1)/total) * 100)
-        
+        let otherPercentage = Utilities.getRoundedDouble(double: ((otherTuple.0/otherTuple.1)/total) * 100)
         
         dataDescriptionLabels.append("Google")
         dataDescriptionPoints.append(googlePercentage)
@@ -55,9 +66,11 @@ class PieChartViewController: UIViewController {
         dataDescriptionLabels.append("Lectures")
         dataDescriptionPoints.append(lecturePercentage)
         
+        dataDescriptionLabels.append("Other")
+        dataDescriptionPoints.append(otherPercentage)
         
         setChart(dataPoints: dataDescriptionLabels, values: dataDescriptionPoints)
-        // Do any additional setup after loading the view.
+        
     }
     
     func setChart(dataPoints: [String], values: [Double]) {
@@ -81,7 +94,7 @@ class PieChartViewController: UIViewController {
         
         var colors = [UIColor]()
         
-        var rgbValues = [(80.0,247.0,218.0),(223.0,56.0,247.0),(208.0, 212.0, 5.0),(181.0, 207.0, 204.0)]
+        var rgbValues = [(80.0,247.0,218.0),(223.0,56.0,247.0),(208.0, 212.0, 5.0),(181.0, 207.0, 204.0), (150.0, 170.0, 174.0)]
         
         let length = dataPoints.count
         for i in 0..<length {

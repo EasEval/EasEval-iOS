@@ -56,8 +56,6 @@ class ExercisesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         current_exercise = exercises_list[indexPath.row]
-        print(current_exercise?.getAmounts()["googleAmount"]?.0 ?? 0)
-        print(current_exercise?.getAmounts()["googleAmount"]?.1 ?? 0)
         self.performSegue(withIdentifier: "segue_to_exercise", sender: self)
     }
 

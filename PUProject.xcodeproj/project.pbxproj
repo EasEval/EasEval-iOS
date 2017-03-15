@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7507AF821E794634005DB299 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3B9D01E5453E700343351 /* Utilities.swift */; };
+		7507AF831E794833005DB299 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3B9D21E545F3600343351 /* Subject.swift */; };
+		7507AF841E794836005DB299 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3BA2D1E5D9B1800343351 /* Exercise.swift */; };
+		7507AF8B1E79609C005DB299 /* PUProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7533777E1E6FED2C0049BD3A /* PUProjectTests.swift */; };
+		7507AF8F1E79919D005DB299 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7507AF8E1E79919D005DB299 /* Answer.swift */; };
+		7507AF911E79A3DF005DB299 /* TimeChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7507AF901E79A3DF005DB299 /* TimeChartViewController.swift */; };
 		752A7B9F1E355AD10062E1FB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 752A7B9E1E355AD10062E1FB /* Launch Screen.storyboard */; };
-		7533777F1E6FED2C0049BD3A /* PUProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7533777E1E6FED2C0049BD3A /* PUProjectTests.swift */; };
 		753377891E7013980049BD3A /* CreateOrderViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753377881E7013980049BD3A /* CreateOrderViewControllerTests.swift */; };
 		7533778C1E701A1D0049BD3A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814C1A49DA1800E65899 /* LoginViewController.swift */; };
 		75C3B9CD1E544EE600343351 /* SubjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3B9CC1E544EE600343351 /* SubjectTableViewController.swift */; };
@@ -88,6 +93,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7507AF8E1E79919D005DB299 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		7507AF901E79A3DF005DB299 /* TimeChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeChartViewController.swift; sourceTree = "<group>"; };
 		752A7B9E1E355AD10062E1FB /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		7533777C1E6FED2C0049BD3A /* PUProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PUProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7533777E1E6FED2C0049BD3A /* PUProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUProjectTests.swift; sourceTree = "<group>"; };
@@ -171,6 +178,7 @@
 			children = (
 				75C3B9D21E545F3600343351 /* Subject.swift */,
 				75C3BA2D1E5D9B1800343351 /* Exercise.swift */,
+				7507AF8E1E79919D005DB299 /* Answer.swift */,
 			);
 			name = "Support Classes";
 			sourceTree = "<group>";
@@ -188,6 +196,7 @@
 		75C3BA331E5DA40F00343351 /* Exercises */ = {
 			isa = PBXGroup;
 			children = (
+				7507AF901E79A3DF005DB299 /* TimeChartViewController.swift */,
 				75C3BA571E5DCD7100343351 /* PieChartViewController.swift */,
 				75C3BA2B1E5D927800343351 /* ExercisesTableViewController.swift */,
 				75C3BA2F1E5DA3D500343351 /* RatingViewController.swift */,
@@ -423,7 +432,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7533777F1E6FED2C0049BD3A /* PUProjectTests.swift in Sources */,
+				7507AF841E794836005DB299 /* Exercise.swift in Sources */,
+				7507AF831E794833005DB299 /* Subject.swift in Sources */,
+				7507AF8B1E79609C005DB299 /* PUProjectTests.swift in Sources */,
+				7507AF821E794634005DB299 /* Utilities.swift in Sources */,
 				753377891E7013980049BD3A /* CreateOrderViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,8 +445,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				75C3B9D91E546B6B00343351 /* SWRevealViewController.m in Sources */,
+				7507AF911E79A3DF005DB299 /* TimeChartViewController.swift in Sources */,
 				75C3BA301E5DA3D500343351 /* RatingViewController.swift in Sources */,
 				75C3B9CF1E544F3B00343351 /* SubjectCell.swift in Sources */,
+				7507AF8F1E79919D005DB299 /* Answer.swift in Sources */,
 				75C3B9CD1E544EE600343351 /* SubjectTableViewController.swift in Sources */,
 				75C3BA2C1E5D927800343351 /* ExercisesTableViewController.swift in Sources */,
 				75C3BA2E1E5D9B1800343351 /* Exercise.swift in Sources */,

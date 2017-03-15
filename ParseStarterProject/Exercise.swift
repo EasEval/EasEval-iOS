@@ -10,11 +10,12 @@ import Foundation
 
 class Exercise {
     
-    let id:String
-    let name:String
-    let subjectId:String
-    var amounts = [String: (Double, Double)]()
-    var mostUsedResource = [String: Int]()
+    private let id:String
+    private let name:String
+    private let subjectId:String
+    private var amounts = [String: (Double, Double)]()
+    private var mostUsedResource = [String: Int]()
+    private var answers = [Answer]()
     
     public init(id:String, name:String, subId:String) {
         
@@ -109,6 +110,17 @@ class Exercise {
     func getMostUsedResources() -> [String: Int] {
     
         return self.mostUsedResource
+    }
+    
+    func addAnswer(answer:Answer) {
+        
+        self.answers.append(answer)
+        
+    }
+    
+    func getAnswers() -> [Answer] {
+        
+        return self.answers
     }
     
 }
