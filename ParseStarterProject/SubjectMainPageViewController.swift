@@ -25,6 +25,27 @@ class SubjectMainPageViewController: UIViewController {
     
     var exercisesNameList = [String]()
     
+    func runActivityIndicator() {
+        
+        activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
+        activityIndicator.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        lineChartView.isHidden = true
+    }
+    
+    func stopActivityIndicator() {
+        
+        self.activityIndicator.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
+        self.lineChartView.isHidden = false
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,16 +66,7 @@ class SubjectMainPageViewController: UIViewController {
         query.whereKey("SUBJECTID", equalTo: current_subject?.getId() ?? "")
         query.addAscendingOrder("NAME")
         
-        
-        activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
-        activityIndicator.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        UIApplication.shared.beginIgnoringInteractionEvents()
-        lineChartView.isHidden = true
+        runActivityIndicator()
         
         query.findObjectsInBackground { (objects, error) in
             
@@ -81,7 +93,12 @@ class SubjectMainPageViewController: UIViewController {
                         let solutionsAmount = object["solutionsAmount"] as! Double
                         let curriculumAmount = object["curriculumAmount"] as! Double
                         let lectureAmount = object["lectureAmount"] as! Double
-                        let otherAmount = object["otherAmount"] as! Double
+                        var otherAmount = 0.0
+                        if object["otherAmount"] != nil {
+                            
+                            otherAmount = object["otherAmount"] as! Double
+                        }
+                    
                         let maxValList = [googleAmount, solutionsAmount, curriculumAmount, lectureAmount, otherAmount]
                         let maxValNames = ["googleAmount","solutionsAmount","curriculumAmount","lectureAmount","otherAmount"]
                         let maxIndex = maxValList.index(of: maxValList.max()!)
@@ -112,13 +129,9 @@ class SubjectMainPageViewController: UIViewController {
                 }
             } else {
                 
-                self.activityIndicator.stopAnimating()
-                UIApplication.shared.endIgnoringInteractionEvents()
-                self.lineChartView.isHidden = false
+                self.stopActivityIndicator()
             }
-            self.activityIndicator.stopAnimating()
-            UIApplication.shared.endIgnoringInteractionEvents()
-            self.lineChartView.isHidden = false
+            self.stopActivityIndicator()
         }
         
         //setChart(dataPoints: months, values: dollars1)
@@ -257,15 +270,28 @@ class SubjectMainPageViewController: UIViewController {
 
     @IBAction func logout(_ sender: Any) {
         
+        logoutAlert("Logg ut", message: "Ønsker du å logge ut?", view: self)
+    }
+    
+    func logout() {
+        
         PFUser.logOut()
-        let currentUser = PFUser.current()
-        if currentUser == nil {
-            
-            print("Logout succeeded")
-        }
-        
         self.performSegue(withIdentifier: "segue_logout_from_subject", sender: self)
+
+    }
+    
+    func logoutAlert(_ title: String, message: String, view:UIViewController) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
+        alert.addAction(UIAlertAction(title: "Logg ut", style: .default, handler: { (action) -> Void in
+            
+            self.logout()
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Avbryt", style: .default, handler: nil))
+        
+        view.present(alert, animated: true, completion: nil)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
