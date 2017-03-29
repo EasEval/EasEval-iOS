@@ -76,7 +76,7 @@ class SubjectTableViewController: UITableViewController, listListener {
     
     internal func callAnimOut() {
         
-        animatePopupOut()
+        animatePopupOut(myView: self.addSubjectView)
         let newTimer : Timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(timer_func), userInfo: nil, repeats: false)
         newTimer.accessibilityActivate()
     }
@@ -92,6 +92,8 @@ class SubjectTableViewController: UITableViewController, listListener {
     @IBOutlet var tableViewAddSubject: UITableView!
     
     @IBOutlet var addSubjectView: addNewSubjectView!
+    @IBOutlet var swipeInfoView: UIView!
+    
     
     @IBAction func actionLogout(_ sender: Any) {
         
@@ -183,9 +185,24 @@ class SubjectTableViewController: UITableViewController, listListener {
         UIApplication.shared.endIgnoringInteractionEvents()
     }
     
+    func animateSwipeInfoIn() {
+        
+        self.view.addSubview(swipeInfoView)
+        swipeInfoView.center = self.view.center
+        
+        swipeInfoView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        swipeInfoView.alpha = 0
+        
+        UIView.animate(withDuration: 0.4) {
+            
+            //self.visualEffectView.effect = self.effect
+            self.swipeInfoView.alpha = 1
+            self.swipeInfoView.transform = CGAffineTransform.identity
+        }
+    }
+    
     func animatePopupIn() {
         
-        //resetAlphas()
         
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
         self.blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -213,26 +230,39 @@ class SubjectTableViewController: UITableViewController, listListener {
         }
     }
     
-    func animatePopupOut() {
+    func animateOutSwipeInfo() {
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            
+            self.swipeInfoView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            self.swipeInfoView.alpha = 0
+            
+        }) { (success:Bool) in
+            
+            self.swipeInfoView.removeFromSuperview()
+        }
+
+    }
+    
+    func animatePopupOut(myView:UIView) {
         
         self.blurEffectView?.removeFromSuperview()
         self.tableView.allowsSelection = true
         UIView.animate(withDuration: 0.3, animations: {
             
-            self.addSubjectView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-            self.addSubjectView.alpha = 0
+            myView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            myView.alpha = 0
             
-            //self.visualEffectView.effect = nil
             
         }) { (success:Bool) in
             
-            self.addSubjectView.removeFromSuperview()
+            myView.removeFromSuperview()
         }
     }
     
     @IBAction func cancelAddSubject(_ sender: Any) {
         
-        animatePopupOut()
+        animatePopupOut(myView: self.addSubjectView)
     }
     
     func downloadSubjectsToPopupView() {
@@ -278,8 +308,18 @@ class SubjectTableViewController: UITableViewController, listListener {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        swipeInfoView.layer.cornerRadius = swipeInfoView.frame.size.height/2
+        animateSwipeInfoIn()
+        
+        let newTimer : Timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(removeSwipeInfo), userInfo: nil, repeats: false)
+        newTimer.accessibilityActivate()
         downloadSubjectList()
         
+    }
+    
+    func removeSwipeInfo() {
+        
+        animateOutSwipeInfo()
     }
 
     override func didReceiveMemoryWarning() {

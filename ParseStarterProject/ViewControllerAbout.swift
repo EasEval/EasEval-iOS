@@ -31,13 +31,17 @@ class ViewControllerAbout: UIViewController, UIWebViewDelegate {
         }
         
         self.navigationItem.title = "EasEval"
-        let query = PFQuery(className: "Info")
+        getInfoFiles()
+    }
+    
+    func getInfoFiles() {
         
         runActivityIndicator()
+        let query = PFQuery(className: "Info")
         query.findObjectsInBackground { (objects, error) in
             
             if error == nil {
-            
+                
                 self.infoFile = objects?[0]["INFO"] as! PFFile
                 self.mLicense_file = objects?[0]["mLICENSE"] as! PFFile
                 self.cLicense_file = objects?[0]["cLICENSE"] as! PFFile
@@ -56,7 +60,6 @@ class ViewControllerAbout: UIViewController, UIWebViewDelegate {
             
             self.stopActivityIndicator()
         }
-        
     }
 
     override func didReceiveMemoryWarning() {

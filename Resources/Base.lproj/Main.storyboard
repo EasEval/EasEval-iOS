@@ -154,10 +154,10 @@
                         <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="subjectCell" rowHeight="70" id="bQ4-IA-XLd" customClass="SubjectCell" customModule="PUProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="70"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bQ4-IA-XLd" id="k4l-CV-VFG">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="69.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fagkode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQ4-9H-w7p">
@@ -213,6 +213,7 @@
                     <connections>
                         <outlet property="addSubjectView" destination="PIK-ev-rdn" id="W4K-nh-iim"/>
                         <outlet property="barButton_logout" destination="Jt2-3l-QDZ" id="uEz-Xo-DKs"/>
+                        <outlet property="swipeInfoView" destination="RtR-B5-j3u" id="pHQ-gJ-G7F"/>
                         <outlet property="tableViewAddSubject" destination="n8O-Zg-r9Q" id="vQU-Ii-gGi"/>
                         <segue destination="wH8-0Z-sLD" kind="presentation" identifier="segue_logout_from_subjects" id="5eC-eU-NeC"/>
                         <segue destination="NxW-7T-UlV" kind="presentation" identifier="segue_to_subject" id="TG1-4h-bi7"/>
@@ -229,10 +230,10 @@
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <prototypes>
                                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addSubject_cell" rowHeight="70" id="0t1-jk-4IQ" customClass="SubjectCell" customModule="PUProject" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="55.5" width="298" height="70"/>
+                                    <rect key="frame" x="0.0" y="56" width="298" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0t1-jk-4IQ" id="Dde-As-Feo">
-                                        <rect key="frame" x="0.0" y="0.0" width="298" height="69.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="298" height="69"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fagkode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFI-Yn-bMN">
@@ -288,6 +289,20 @@
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.2156862745" green="0.1843137255" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view contentMode="scaleToFill" id="RtR-B5-j3u">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="54"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe left to delete a subject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nj2-SZ-c3h">
+                            <rect key="frame" x="14" y="17" width="213" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.21568627450980393" green="0.18431372549019609" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
             </objects>
             <point key="canvasLocation" x="1221.5999999999999" y="558.17091454272872"/>
@@ -601,10 +616,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell_ex" id="umb-tg-gMz">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="umb-tg-gMz" id="hq9-XV-fKO">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1021,7 +1036,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xXz-M0-zba" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Comments" image="Comment_icon" id="uMy-0d-rKY"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="q8N-Fo-q6I">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="q8N-Fo-q6I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.2156862745" green="0.1843137255" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1134,7 +1149,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="rti-dO-HQs"/>
-        <segue reference="5eC-eU-NeC"/>
+        <segue reference="Xkk-Vv-HYI"/>
         <segue reference="8DF-TC-Qyj"/>
     </inferredMetricsTieBreakers>
 </document>
