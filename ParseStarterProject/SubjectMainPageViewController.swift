@@ -120,7 +120,7 @@ class SubjectMainPageViewController: UIViewController {
                         exercises_list[indexToAddValue].addAmountForKey(key: "rating", amount: rating)
                         exercises_list[indexToAddValue].addAmountForKey(key: "time", amount: time)
                         exercises_list[indexToAddValue].addMostUsedResourceForKey(key: keyMax)
-                        self.updateChartWithAmount(amount: "rating", description: "Student ratings of the exercises")
+                        self.updateChartWithAmount(amount: "rating", description: "Student ratings of the exercises from 1 - 100, where 100 is best")
                         
                         let newAnswer = Answer(gAm: googleAmount, sAm: solutionsAmount, cAm: curriculumAmount, lAm: lectureAmount, oAm: otherAmount, rating: rating, time: time, comment: comment)
                         
@@ -252,11 +252,11 @@ class SubjectMainPageViewController: UIViewController {
             
         case 0:
             
-            self.updateChartWithAmount(amount: "rating", description: "Student ratings of the exercises")
+            self.updateChartWithAmount(amount: "rating", description: "Student ratings of the exercises from 1 - 100, where 100 is best")
             
         case 1:
             
-            self.updateChartWithAmount(amount: "time",description: "Time students spent on the exercises")
+            self.updateChartWithAmount(amount: "time",description: "Time students spent on the exercises given in percentage")
         
         case 2:
             
@@ -270,7 +270,7 @@ class SubjectMainPageViewController: UIViewController {
 
     @IBAction func logout(_ sender: Any) {
         
-        logoutAlert("Logg ut", message: "Ønsker du å logge ut?", view: self)
+        logoutAlert("Logout", message: "Sure you want to logout?", view: self)
     }
     
     func logout() {
@@ -283,13 +283,13 @@ class SubjectMainPageViewController: UIViewController {
     func logoutAlert(_ title: String, message: String, view:UIViewController) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
-        alert.addAction(UIAlertAction(title: "Logg ut", style: .default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "Logout", style: .default, handler: { (action) -> Void in
             
             self.logout()
             
         }))
         
-        alert.addAction(UIAlertAction(title: "Avbryt", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         view.present(alert, animated: true, completion: nil)
     }

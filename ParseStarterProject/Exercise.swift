@@ -122,5 +122,4 @@ class Exercise {
         
         return self.answers
     }
-    
 }

@@ -37,15 +37,10 @@ class addNewSubjectView: UIView, UITableViewDelegate, UITableViewDataSource {
         return subjectData.count
     }
     
-    /*override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-     
-     return "Fag"
-     }*/
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addSubject_cell", for: indexPath) as! SubjectCell
         
-        cell.labelSubjectCode.text = subjectData[indexPath.row].getId() + ": "
+        cell.labelSubjectCode.text = subjectData[indexPath.row].getId()
         cell.labelSubjectName.text = subjectData[indexPath.row].getName()
         
         return cell
@@ -81,7 +76,7 @@ class SubjectTableViewController: UITableViewController, listListener {
     
     internal func callAnimOut() {
         
-        animateOut()
+        animatePopupOut()
         let newTimer : Timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(timer_func), userInfo: nil, repeats: false)
         newTimer.accessibilityActivate()
     }
@@ -100,7 +95,7 @@ class SubjectTableViewController: UITableViewController, listListener {
     
     @IBAction func actionLogout(_ sender: Any) {
         
-        logoutAlert("Logg ut", message: "Ønsker du å logge ut?", view: self)
+        logoutAlert("Logout", message: "Sure you want to logout?", view: self)
     }
     
     func logout() {
@@ -112,13 +107,27 @@ class SubjectTableViewController: UITableViewController, listListener {
     func logoutAlert(_ title: String, message: String, view:UIViewController) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
-        alert.addAction(UIAlertAction(title: "Logg ut", style: .default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "Logout", style: .default, handler: { (action) -> Void in
             
             self.logout()
             
         }))
         
-        alert.addAction(UIAlertAction(title: "Avbryt", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        view.present(alert, animated: true, completion: nil)
+    }
+    
+    func badConnectionAlert(_ title: String, message: String, view:UIViewController) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: { (action) -> Void in
+            
+            self.downloadSubjectList()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+            
+            self.performSegue(withIdentifier: "segue_logout_from_subjects", sender: self)
+        }))
         
         view.present(alert, animated: true, completion: nil)
     }
@@ -151,6 +160,7 @@ class SubjectTableViewController: UITableViewController, listListener {
             } else {
                 
                 self.stopActivityIndicator()
+                self.badConnectionAlert("Error", message: "Couldn´t login. Check your connection and try again", view: self)
             }
         }
     }
@@ -173,7 +183,7 @@ class SubjectTableViewController: UITableViewController, listListener {
         UIApplication.shared.endIgnoringInteractionEvents()
     }
     
-    func animateIn() {
+    func animatePopupIn() {
         
         //resetAlphas()
         
@@ -185,7 +195,6 @@ class SubjectTableViewController: UITableViewController, listListener {
         view.addSubview(blurEffectView!)
         self.tableView.allowsSelection = false
         
-        self.addSubjectView.subjectData.removeAll()
         self.addSubjectView.registerListener(listener: self)
         self.addSubjectView.reloadInputViews()
         self.addSubjectView.layer.cornerRadius = 15
@@ -204,7 +213,7 @@ class SubjectTableViewController: UITableViewController, listListener {
         }
     }
     
-    func animateOut() {
+    func animatePopupOut() {
         
         self.blurEffectView?.removeFromSuperview()
         self.tableView.allowsSelection = true
@@ -223,21 +232,19 @@ class SubjectTableViewController: UITableViewController, listListener {
     
     @IBAction func cancelAddSubject(_ sender: Any) {
         
-        animateOut()
+        animatePopupOut()
     }
     
-    func downloadAllSubjects() {
+    func downloadSubjectsToPopupView() {
         
+        startActivityIndicator()
         let subjectQuery = PFQuery(className: "Subjects")
-        //subjectQuery.whereKey("USERID", notEqualTo: PFUser.current() ?? 0)
-        //subjectQuery.includeKey("SUBCODE")             
         subjectQuery.addAscendingOrder("NAME")
         subjectQuery.findObjectsInBackground { (objects, error) in
             
             if error == nil {
-                
+                self.addSubjectView.subjectData.removeAll()
                 for object in objects! {
-                    
                     
                     let subjectId = object["ID"] as! String
                     let subjectName = object["NAME"] as! String
@@ -248,8 +255,12 @@ class SubjectTableViewController: UITableViewController, listListener {
                         let newSubject = Subject(id: subjectId, name: subjectName, objectId: objectId)
                         self.addSubjectView.subjectData.append(newSubject)
                     }
-                    
                 }
+                self.stopActivityIndicator()
+                self.animatePopupIn()
+            } else {
+                
+                self.stopActivityIndicator()
             }
             self.tableViewAddSubject.reloadData()
         }
@@ -259,8 +270,8 @@ class SubjectTableViewController: UITableViewController, listListener {
     
     @IBAction func addSubject(_ sender: Any) {
         
-        downloadAllSubjects()
-        animateIn()
+        downloadSubjectsToPopupView()
+        //animateIn()
     }
     
     
@@ -315,6 +326,7 @@ class SubjectTableViewController: UITableViewController, listListener {
         if editingStyle == .delete {
             print("DEL")
             
+            self.startActivityIndicator()
             let subject_query = PFQuery(className: "Subjects")
             let delete_query = PFQuery(className: "HasSubject")
             subject_query.whereKey("objectId", equalTo: subjectList[indexPath.row].getObjectId())
@@ -338,10 +350,14 @@ class SubjectTableViewController: UITableViewController, listListener {
                                     self.tableView.deleteRows(at: [indexPath], with: .fade)
                                     //self.tableView.reloadData()
                                 }
+                                self.stopActivityIndicator()
                             }
                         })
                         
                     }
+                } else {
+                    
+                    self.stopActivityIndicator()
                 }
             })
             

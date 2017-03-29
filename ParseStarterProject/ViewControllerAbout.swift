@@ -30,6 +30,7 @@ class ViewControllerAbout: UIViewController, UIWebViewDelegate {
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        self.navigationItem.title = "EasEval"
         let query = PFQuery(className: "Info")
         
         runActivityIndicator()
@@ -72,44 +73,15 @@ class ViewControllerAbout: UIViewController, UIWebViewDelegate {
     
     @IBAction func segmentChanged(_ sender: Any) {
         
-        switch segmentControl.selectedSegmentIndex {
-            
-        case 0:
-            
-            infoFile.getPathInBackground(block: { (path, error) in
-                
-                if error == nil {
-                    
-                    self.loadWebView(path: path!)
-                }
-            })
-
-            
-        case 1:
-            
-            mLicense_file.getPathInBackground(block: { (path, error) in
-                
-                if error == nil {
-                    
-                    self.loadWebView(path: path!)
-                }
-            })
-
-        case 2:
-            
-            cLicense_file.getPathInBackground(block: { (path, error) in
-                
-                if error == nil {
-                    
-                    self.loadWebView(path: path!)
-                }
-            })
-
-            
-        default:
-            break
-        }
+        let licenses = [infoFile, mLicense_file, cLicense_file]
         
+        licenses[segmentControl.selectedSegmentIndex%licenses.count]!.getPathInBackground(block: { (path, error) in
+            
+            if error == nil {
+                
+                self.loadWebView(path: path!)
+            }
+        })
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
@@ -122,8 +94,6 @@ class ViewControllerAbout: UIViewController, UIWebViewDelegate {
         
         runActivityIndicator()
     }
-    
-    
     
     func runActivityIndicator() {
         
