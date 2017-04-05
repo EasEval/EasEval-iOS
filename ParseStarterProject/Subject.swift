@@ -8,15 +8,19 @@
 
 import Foundation
 
+//This class stores necessary information about a subject
 class Subject {
     
     let id:String
     let name:String
+    let objectId:String
+    var exercises = [String: Exercise]()
     
-    public init(id:String, name:String) {
+    public init(id:String, name:String, objectId:String) {
         
         self.id = id
         self.name = name
+        self.objectId = objectId
     }
     
     func getId() -> String {
@@ -29,5 +33,18 @@ class Subject {
         return self.name
     }
     
+    func getObjectId() -> String {
+        
+        return self.objectId
+    }
     
+    func getExercises() -> [String: Exercise] {
+        
+        return self.exercises
+    }
+    
+    func setExerciseForKey(key:String, exer:Exercise) {
+        
+        self.exercises[key] = exer
+    }
 }
