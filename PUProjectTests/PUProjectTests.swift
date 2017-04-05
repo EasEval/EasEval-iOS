@@ -77,11 +77,8 @@ class PUProjectTests: XCTestCase {
         XCTAssertEqual(testSubject.getName(), "Name")
         XCTAssertEqual(testSubject.getId(), "SubID")
         XCTAssertEqual(testSubject.getObjectId(), "ObjID")
-        
         let addExercise = getTestExercise()
-        
         testSubject.setExerciseForKey(key: "TMA4100", exer: addExercise)
-    
         XCTAssertEqual(testSubject.getExercises()["TMA4100"]!.getName(), addExercise.getName())
         XCTAssertEqual(testSubject.getExercises().count, 1)
     }
@@ -107,9 +104,7 @@ class PUProjectTests: XCTestCase {
         XCTAssertEqual(testAnswer.getotherAmount(), other_amount)
         
         let testExercise = Exercise(id: "2XX3", name: "TestExer", subId: "TMA4100")
-        
         testExercise.addAnswer(answer: testAnswer)
-        
         XCTAssertEqual(testExercise.getAnswers()[0].getTime(), time)
         XCTAssertEqual(testExercise.getAnswers()[0].getRating(), rating)
         XCTAssertEqual(testExercise.getAnswers()[0].getGoogleAmount(), google_amount)
@@ -119,7 +114,7 @@ class PUProjectTests: XCTestCase {
         XCTAssertEqual(testExercise.getAnswers()[0].getotherAmount(), other_amount)
         
     }
-    
+
     func testPerformanceExample() {
         self.measure {
         }

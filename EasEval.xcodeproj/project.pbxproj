@@ -17,7 +17,6 @@
 		750D17961E8B97AF00766E5B /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D17951E8B97AF00766E5B /* CommentCell.swift */; };
 		751B00891E94C8AD0014FF74 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7507AF8E1E79919D005DB299 /* Answer.swift */; };
 		752A7B9F1E355AD10062E1FB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 752A7B9E1E355AD10062E1FB /* Launch Screen.storyboard */; };
-		753377891E7013980049BD3A /* CreateOrderViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753377881E7013980049BD3A /* CreateOrderViewControllerTests.swift */; };
 		7533778C1E701A1D0049BD3A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814C1A49DA1800E65899 /* LoginViewController.swift */; };
 		75A7EB521E826A4E00412FC1 /* ViewControllerAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7EB511E826A4E00412FC1 /* ViewControllerAbout.swift */; };
 		75C3B9CD1E544EE600343351 /* SubjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C3B9CC1E544EE600343351 /* SubjectTableViewController.swift */; };
@@ -105,7 +104,6 @@
 		7533777C1E6FED2C0049BD3A /* EasEvalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasEvalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7533777E1E6FED2C0049BD3A /* PUProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUProjectTests.swift; sourceTree = "<group>"; };
 		753377801E6FED2C0049BD3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		753377881E7013980049BD3A /* CreateOrderViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderViewControllerTests.swift; sourceTree = "<group>"; };
 		75A7EB511E826A4E00412FC1 /* ViewControllerAbout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAbout.swift; sourceTree = "<group>"; };
 		75C3B9CC1E544EE600343351 /* SubjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubjectTableViewController.swift; path = ../SubjectTableViewController.swift; sourceTree = "<group>"; };
 		75C3B9CE1E544F3B00343351 /* SubjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectCell.swift; sourceTree = "<group>"; };
@@ -162,10 +160,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		751B008D1E9508C90014FF74 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				75C3B9D51E546B2500343351 /* SWRevealViewController */,
+				75C3BA461E5DC41D00343351 /* Charts.xcodeproj */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		751B00901E95172C0014FF74 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				75A7EB511E826A4E00412FC1 /* ViewControllerAbout.swift */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
 		7533777D1E6FED2C0049BD3A /* PUProjectTests */ = {
 			isa = PBXGroup;
 			children = (
-				753377881E7013980049BD3A /* CreateOrderViewControllerTests.swift */,
 				7533777E1E6FED2C0049BD3A /* PUProjectTests.swift */,
 				753377801E6FED2C0049BD3A /* Info.plist */,
 			);
@@ -183,6 +197,7 @@
 		75C3B9D41E545FEB00343351 /* Support Classes */ = {
 			isa = PBXGroup;
 			children = (
+				75C3B9D01E5453E700343351 /* Utilities.swift */,
 				75C3B9D21E545F3600343351 /* Subject.swift */,
 				75C3BA2D1E5D9B1800343351 /* Exercise.swift */,
 				7507AF8E1E79919D005DB299 /* Answer.swift */,
@@ -203,6 +218,7 @@
 		75C3BA331E5DA40F00343351 /* Exercises */ = {
 			isa = PBXGroup;
 			children = (
+				750D17951E8B97AF00766E5B /* CommentCell.swift */,
 				750D17911E8B972300766E5B /* CommentTableViewController.swift */,
 				7507AF901E79A3DF005DB299 /* TimeChartViewController.swift */,
 				75C3BA571E5DCD7100343351 /* PieChartViewController.swift */,
@@ -245,7 +261,7 @@
 		81BA813C1A49DA1800E65899 = {
 			isa = PBXGroup;
 			children = (
-				81BA81471A49DA1800E65899 /* P1 */,
+				81BA81471A49DA1800E65899 /* Scripts */,
 				814C3AC51B69877600E307BB /* Resources */,
 				7533777D1E6FED2C0049BD3A /* PUProjectTests */,
 				81BA816A1A49DB5600E65899 /* Frameworks */,
@@ -262,23 +278,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		81BA81471A49DA1800E65899 /* P1 */ = {
+		81BA81471A49DA1800E65899 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
-				75C3BA461E5DC41D00343351 /* Charts.xcodeproj */,
+				751B00901E95172C0014FF74 /* About */,
+				751B008D1E9508C90014FF74 /* libs */,
 				75C3BA341E5DA43D00343351 /* Subjects */,
 				75C3BA331E5DA40F00343351 /* Exercises */,
-				75C3B9D51E546B2500343351 /* SWRevealViewController */,
 				75C3B9D41E545FEB00343351 /* Support Classes */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
-				75C3B9D01E5453E700343351 /* Utilities.swift */,
 				7533778F1E701A660049BD3A /* Login */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
-				750D17951E8B97AF00766E5B /* CommentCell.swift */,
-				75A7EB511E826A4E00412FC1 /* ViewControllerAbout.swift */,
 				752A7B9E1E355AD10062E1FB /* Launch Screen.storyboard */,
 			);
-			name = P1;
+			name = Scripts;
 			path = ParseStarterProject;
 			sourceTree = "<group>";
 		};
@@ -448,7 +461,6 @@
 				7507AF8B1E79609C005DB299 /* PUProjectTests.swift in Sources */,
 				751B00891E94C8AD0014FF74 /* Answer.swift in Sources */,
 				7507AF821E794634005DB299 /* Utilities.swift in Sources */,
-				753377891E7013980049BD3A /* CreateOrderViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
