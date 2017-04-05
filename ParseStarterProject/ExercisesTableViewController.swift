@@ -27,12 +27,6 @@ class ExercisesTableViewController: UITableViewController {
         self.title = current_subject?.getId()
 
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -43,10 +37,9 @@ class ExercisesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell_ex", for: indexPath)
-
-        cell.textLabel?.text = exercises_list[indexPath.row].getName()
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell_ex", for: indexPath)
+        cell.textLabel?.text = exercises_list[indexPath.row].getName()
         return cell
     }
     

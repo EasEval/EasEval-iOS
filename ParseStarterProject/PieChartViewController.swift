@@ -15,7 +15,6 @@ class PieChartViewController: UIViewController {
     @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet var pieChartView: PieChartView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +24,6 @@ class PieChartViewController: UIViewController {
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        
         self.navigationItem.title = current_exercise?.getName()
         loadDataIntoChart()
     }
@@ -40,7 +38,6 @@ class PieChartViewController: UIViewController {
         let curriculumTuple = current_exercise!.getAmountFromKey(key: "curriculumAmount")
         let lectureTuple = current_exercise!.getAmountFromKey(key: "lectureAmount")
         let otherTuple = current_exercise!.getAmountFromKey(key: "otherAmount")
-        
         let total = googleTuple.0/googleTuple.1 + solutionTuple.0/solutionTuple.1 + curriculumTuple.0/curriculumTuple.1 + lectureTuple.0/lectureTuple.1 + otherTuple.0/otherTuple.1
         
         let googlePercentage = Utilities.getRoundedDouble(double: ((googleTuple.0/googleTuple.1)/total) * 100)
@@ -81,9 +78,7 @@ class PieChartViewController: UIViewController {
         pieChartView.data = pieChartData
         pieChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
         var colors = [UIColor]()
-        
         var rgbValues = [(80.0,247.0,218.0),(223.0,56.0,247.0),(208.0, 212.0, 5.0),(181.0, 207.0, 204.0), (150.0, 170.0, 174.0)]
-        
         let length = dataPoints.count
         for i in 0..<length {
             
@@ -98,10 +93,5 @@ class PieChartViewController: UIViewController {
         pieChartView.chartDescription?.text = "The percentage of different resources used by the students to solve the exercise"
         pieChartView.legend.enabled = false
     
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
+    }    
 }

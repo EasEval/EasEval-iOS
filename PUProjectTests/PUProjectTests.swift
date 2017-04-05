@@ -115,9 +115,10 @@ class PUProjectTests: XCTestCase {
         
     }
 
+    /*
     func testPerformanceExample() {
         self.measure {
         }
-    }
+    }*/
     
 }

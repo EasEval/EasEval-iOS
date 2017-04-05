@@ -20,10 +20,8 @@ class SubjectMainPageViewController: UIViewController {
     @IBOutlet var logoutButton: UIBarButtonItem!
     @IBOutlet var lineChartView: LineChartView!
     @IBOutlet var segmentedControl: UISegmentedControl!
-    
     var lineChartData_resources = LineChartData()
     var activityIndicator = UIActivityIndicatorView()
-    
     var exercisesNameList = [String]()
     
     func runActivityIndicator() {
@@ -165,7 +163,6 @@ class SubjectMainPageViewController: UIViewController {
         var other_amounts = [Double]()
         var labels = [String]()
         
-        
         for name in exercisesNameList {
             
             let indexExercise = exercisesNameList.index(of: name)!
@@ -176,7 +173,6 @@ class SubjectMainPageViewController: UIViewController {
             let otherAmount = exercises_list[indexExercise].getAmountFromKey(key: "otherAmount").0
             
             let total = googleAmount + solutionsAmount + curriculumAmount + lectureAmount + otherAmount
-            
             let google_val = Utilities.getRoundedDouble(double: googleAmount/total) * 100
             let solution_val = Utilities.getRoundedDouble(double: solutionsAmount/total) * 100
             let curriculum_val = Utilities.getRoundedDouble(double: curriculumAmount/total) * 100
@@ -279,7 +275,6 @@ class SubjectMainPageViewController: UIViewController {
         
         PFUser.logOut()
         self.performSegue(withIdentifier: "segue_logout_from_subject", sender: self)
-
     }
     
     func logoutAlert(_ title: String, message: String, view:UIViewController) {
@@ -295,9 +290,4 @@ class SubjectMainPageViewController: UIViewController {
         
         view.present(alert, animated: true, completion: nil)
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    
-    }
-    
 }

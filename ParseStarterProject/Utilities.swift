@@ -35,6 +35,4 @@ class Utilities {
         
         return Double(round(100*double)/100)
     }
-    
-    
 }

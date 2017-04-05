@@ -16,7 +16,6 @@ class CommentTableViewController: UITableViewController {
     @IBOutlet var comment_popup_textview: UITextView!
     @IBOutlet var button_popup_view: UIButton!
     var comments = [String]()
-    
     var blurEffectView:UIVisualEffectView? = nil
     var popupViewIsUp = false
     
@@ -31,6 +30,16 @@ class CommentTableViewController: UITableViewController {
         }
         
         self.navigationItem.title = current_exercise?.getName()
+        self.getValidAnswers()
+        comment_popup_view.layer.cornerRadius = 15
+        comment_popup_textview.layer.cornerRadius = 15
+        button_popup_view.layer.cornerRadius = button_popup_view.frame.size.width / 2
+        button_popup_view.layer.borderWidth = 0.5
+        button_popup_view.layer.borderColor = UIColor.black.cgColor
+        
+    }
+    
+    func getValidAnswers() {
         
         for answer in current_exercise!.getAnswers() {
             
@@ -39,22 +48,9 @@ class CommentTableViewController: UITableViewController {
                 comments.append(answer.getComment())
             }
         }
-        
-        comment_popup_view.layer.cornerRadius = 15
-        comment_popup_textview.layer.cornerRadius = 15
-        button_popup_view.layer.cornerRadius = button_popup_view.frame.size.width / 2
-        button_popup_view.layer.borderWidth = 0.5
-        button_popup_view.layer.borderColor = UIColor.black.cgColor
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
         return 1
     }
 
@@ -63,7 +59,6 @@ class CommentTableViewController: UITableViewController {
         return comments.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "comment_cell", for: indexPath) as! CommentCell

@@ -47,7 +47,6 @@ class addNewSubjectView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         cell.labelSubjectCode.text = subjectData[indexPath.row].getId()
         cell.labelSubjectName.text = subjectData[indexPath.row].getName()
-        
         return cell
     }
     
@@ -85,7 +84,6 @@ class SubjectTableViewController: UITableViewController, listListener {
     //The tableview in this class directs the professor to the given subject
     //This class implements a custom made protocol/interface, which works as a listener for the popupview.
     
-    
     //This function comes with the listListener, and it is called from the popupView where you add a new subject. This function animatea out and removes the popupView. The timer just ads a delay, for security purposes
     internal func callAnimOut() {
         
@@ -104,16 +102,13 @@ class SubjectTableViewController: UITableViewController, listListener {
     var activityIndicator = UIActivityIndicatorView()
     var blurEffectView:UIVisualEffectView? = nil
     @IBOutlet var tableViewAddSubject: UITableView!
-    
     @IBOutlet var addSubjectView: addNewSubjectView!
     @IBOutlet var swipeInfoView: UIView!
-    
     
     @IBAction func actionLogout(_ sender: Any) {
         
         logoutAlert("Logout", message: "Sure you want to logout?", view: self)
     }
-    
     
     func logout() {
         
@@ -131,7 +126,6 @@ class SubjectTableViewController: UITableViewController, listListener {
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
         view.present(alert, animated: true, completion: nil)
     }
     
@@ -209,7 +203,6 @@ class SubjectTableViewController: UITableViewController, listListener {
         swipeInfoView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
         swipeInfoView.alpha = 0
         UIView.animate(withDuration: 0.4) {
-            
             //self.visualEffectView.effect = self.effect
             self.swipeInfoView.alpha = 1
             self.swipeInfoView.transform = CGAffineTransform.identity
@@ -257,7 +250,6 @@ class SubjectTableViewController: UITableViewController, listListener {
             
             self.swipeInfoView.removeFromSuperview()
         }
-
     }
     
     //Animates the 'addNewSubject' view out and removes it
@@ -269,7 +261,6 @@ class SubjectTableViewController: UITableViewController, listListener {
             
             myView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
             myView.alpha = 0
-            
             
         }) { (success:Bool) in
             
@@ -313,8 +304,6 @@ class SubjectTableViewController: UITableViewController, listListener {
             }
             self.tableViewAddSubject.reloadData()
         }
-        
-        
     }
     
     @IBAction func addSubject(_ sender: Any) {
@@ -322,17 +311,14 @@ class SubjectTableViewController: UITableViewController, listListener {
         downloadSubjectsToPopupView()
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         swipeInfoView.layer.cornerRadius = swipeInfoView.frame.size.height/2
         animateSwipeInfoIn()
-        
         let newTimer : Timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(removeSwipeInfo), userInfo: nil, repeats: false)
         newTimer.accessibilityActivate()
         downloadSubjectList()
-        
     }
     
     func removeSwipeInfo() {
@@ -353,11 +339,8 @@ class SubjectTableViewController: UITableViewController, listListener {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "subjectCell", for: indexPath) as! SubjectCell
-        
         cell.labelSubjectCode.text = subjectList[indexPath.row].getId() + ": "
         cell.labelSubjectName.text = subjectList[indexPath.row].getName()
-
-    
         return cell
     }
     
@@ -399,20 +382,12 @@ class SubjectTableViewController: UITableViewController, listListener {
                                 self.stopActivityIndicator()
                             }
                         })
-                        
                     }
                 } else {
                     
                     self.stopActivityIndicator()
                 }
             })
-            
-            
         }
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
-
 }

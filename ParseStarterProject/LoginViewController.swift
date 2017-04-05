@@ -11,12 +11,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var textFieldName: UITextField!
     @IBOutlet var textFieldPassword: UITextField!
     @IBOutlet var buttonLogin: UIButton!
-    
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func actionLogin(_ sender: Any) {
         
-    
         let name = textFieldName.text!
         let password = textFieldPassword.text!
         activityIndicator.startAnimating()
@@ -76,10 +74,4 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
-
 }

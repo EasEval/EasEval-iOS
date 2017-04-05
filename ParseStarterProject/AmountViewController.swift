@@ -42,20 +42,13 @@ class AmountViewController: UIViewController {
         for key in (current_exercise?.getMostUsedResources().keys)! {
             
             dataPointValues.append(Double(current_exercise!.getMostUsedResourceFromKey(key: key)))
-            
             let labelIndex = rawKeys.index(of: key)
             dataPointLabels.append(labels[labelIndex!])
             //dataPointLabels.append(key)
         }
         setChart(dataPoints: dataPointLabels, values: dataPointValues)
         viewDidLoadProperly = true
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
+    }    
     func setChart(dataPoints:[String], values:[Double]) {
         
         var dataEntries: [BarChartDataEntry] = []

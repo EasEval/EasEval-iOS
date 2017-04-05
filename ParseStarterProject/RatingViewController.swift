@@ -29,10 +29,6 @@ class RatingViewController: UIViewController {
         loadDataIntoView()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     func loadDataIntoView() {
         
         let labels = ["100 - 80","80 - 60","60 - 40","40 - 20","20 - 0"]

@@ -24,7 +24,6 @@ class Exercise {
         self.id = id
         self.name = name
         self.subjectId = subId
-        //self.amounts = [String(): (Double(), Double())]
     }
     
     func getId() -> String {
@@ -48,7 +47,6 @@ class Exercise {
             
             return true
         }
-        
         return false
     }
     

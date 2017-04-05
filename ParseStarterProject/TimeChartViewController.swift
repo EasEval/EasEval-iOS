@@ -24,14 +24,8 @@ class TimeChartViewController: UIViewController {
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        
         self.navigationItem.title = current_exercise?.getName()
         loadDataIntoView()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
     }
     
     func loadDataIntoView() {

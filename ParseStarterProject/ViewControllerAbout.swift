@@ -62,11 +62,6 @@ class ViewControllerAbout: UIViewController, UIWebViewDelegate {
             self.stopActivityIndicator()
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func loadWebView(path:String) {
         
@@ -78,7 +73,6 @@ class ViewControllerAbout: UIViewController, UIWebViewDelegate {
     @IBAction func segmentChanged(_ sender: Any) {
         
         let licenses = [infoFile, mLicense_file, cLicense_file]
-        
         licenses[segmentControl.selectedSegmentIndex%licenses.count]!.getPathInBackground(block: { (path, error) in
             
             if error == nil {
@@ -95,7 +89,6 @@ class ViewControllerAbout: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         
-        
         runActivityIndicator()
     }
     
@@ -109,7 +102,6 @@ class ViewControllerAbout: UIViewController, UIWebViewDelegate {
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         UIApplication.shared.beginIgnoringInteractionEvents()
-        
     }
     
     func stopActivityIndicator() {
@@ -117,6 +109,4 @@ class ViewControllerAbout: UIViewController, UIWebViewDelegate {
         self.activityIndicator.stopAnimating()
         UIApplication.shared.endIgnoringInteractionEvents()
     }
-
-
 }

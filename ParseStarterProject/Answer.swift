@@ -110,7 +110,6 @@ class Answer {
         
         return self.comment
     }
-
 }
 
 
