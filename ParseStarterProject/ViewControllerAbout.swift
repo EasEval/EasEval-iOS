@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 
+//This class controls the 'About' view of the application. It downloads the info files from the databse and make them readable to the user
 class ViewControllerAbout: UIViewController, UIWebViewDelegate {
 
     @IBOutlet var menuButton: UIBarButtonItem!

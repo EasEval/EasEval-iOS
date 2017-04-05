@@ -9,6 +9,7 @@
 import UIKit
 import Charts
 
+//This is the viewController class that provides a bar chart/graph that shows how many students who used a give resource the most
 class TimeChartViewController: UIViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
@@ -27,15 +28,10 @@ class TimeChartViewController: UIViewController {
         self.navigationItem.title = current_exercise?.getName()
         loadDataIntoView()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        //loadDataIntoView()
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
     func loadDataIntoView() {
@@ -68,8 +64,6 @@ class TimeChartViewController: UIViewController {
     
     func setChart(dataPoints:[String], values:[Double]) {
         
-        //var yValues : [ChartDataEntry] = [ChartDataEntry]()
-        
         var dataEntries: [BarChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
@@ -87,17 +81,4 @@ class TimeChartViewController: UIViewController {
         barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dataPoints)
         barChartView.chartDescription?.text = "NUMBER OF STUDENTS WHO SPENT A GIVEN TIME ON THE EXERCISE"
     }
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -19,6 +19,11 @@ protocol listListener {
 
 class addNewSubjectView: UIView, UITableViewDelegate, UITableViewDataSource {
     
+    //This class is the controller that controls the popupview when you press the + button in the navigation bar. The controller to add a new subject. 
+    //All the functons that starts with 'tableView', is default functions that comes with the tableView class. 
+    //The 'cellForRowAt' function returns the proper cell for each row in the tableview. 
+    //The other tableView functions are self-explanatory
+    
     var subjectData = [Subject]()
     var list_listener:listListener? = nil
     
@@ -46,6 +51,9 @@ class addNewSubjectView: UIView, UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    //This function get called when you press a cell in the tableView
+    //It crates a query, finds the proper subject in the database, and ads a relation between this subject and the professor that select it. The subject will then show up in the subjectlist
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let newObject = PFObject(className: "HasSubject")
@@ -61,7 +69,6 @@ class addNewSubjectView: UIView, UITableViewDelegate, UITableViewDataSource {
                     let subject = subjects[0]
                     newObject["SUBCODE"] = subject
                     newObject.saveEventually()
-                    
                 }
                 self.list_listener?.callAnimOut()
             } else {
@@ -74,6 +81,12 @@ class addNewSubjectView: UIView, UITableViewDelegate, UITableViewDataSource {
 
 class SubjectTableViewController: UITableViewController, listListener {
     
+    //This class is the viewController for the professors subjectlist.
+    //The tableview in this class directs the professor to the given subject
+    //This class implements a custom made protocol/interface, which works as a listener for the popupview.
+    
+    
+    //This function comes with the listListener, and it is called from the popupView where you add a new subject. This function animatea out and removes the popupView. The timer just ads a delay, for security purposes
     internal func callAnimOut() {
         
         animatePopupOut(myView: self.addSubjectView)
@@ -86,6 +99,7 @@ class SubjectTableViewController: UITableViewController, listListener {
         downloadSubjectList()
     }
 
+    //GUI references
     @IBOutlet var barButton_logout: UIBarButtonItem!
     var activityIndicator = UIActivityIndicatorView()
     var blurEffectView:UIVisualEffectView? = nil
@@ -99,6 +113,7 @@ class SubjectTableViewController: UITableViewController, listListener {
         
         logoutAlert("Logout", message: "Sure you want to logout?", view: self)
     }
+    
     
     func logout() {
         
@@ -134,6 +149,7 @@ class SubjectTableViewController: UITableViewController, listListener {
         view.present(alert, animated: true, completion: nil)
     }
     
+    // This function downloads all the subject related to the logged in professor. These subjects will appear in the tableView.
     func downloadSubjectList() {
         
         startActivityIndicator()
@@ -185,14 +201,13 @@ class SubjectTableViewController: UITableViewController, listListener {
         UIApplication.shared.endIgnoringInteractionEvents()
     }
     
+    //When the view appears, this function animates a info view in for some seconds, and removes it afterwards
     func animateSwipeInfoIn() {
         
         self.view.addSubview(swipeInfoView)
         swipeInfoView.center = self.view.center
-        
         swipeInfoView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
         swipeInfoView.alpha = 0
-        
         UIView.animate(withDuration: 0.4) {
             
             //self.visualEffectView.effect = self.effect
@@ -201,8 +216,8 @@ class SubjectTableViewController: UITableViewController, listListener {
         }
     }
     
+    //Animates the 'addNewSubject' popupview in to the viewController
     func animatePopupIn() {
-        
         
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
         self.blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -230,6 +245,7 @@ class SubjectTableViewController: UITableViewController, listListener {
         }
     }
     
+    //Animates out the info view and removes it from the viewcontroller
     func animateOutSwipeInfo() {
         
         UIView.animate(withDuration: 0.3, animations: {
@@ -244,6 +260,7 @@ class SubjectTableViewController: UITableViewController, listListener {
 
     }
     
+    //Animates the 'addNewSubject' view out and removes it
     func animatePopupOut(myView:UIView) {
         
         self.blurEffectView?.removeFromSuperview()
@@ -265,6 +282,8 @@ class SubjectTableViewController: UITableViewController, listListener {
         animatePopupOut(myView: self.addSubjectView)
     }
     
+    //This function downloads all the subject NOT related to the logged in professor. 
+    //Theese subject will appear in the 'addSubject' popupview so that the professor can add one of theese subjects
     func downloadSubjectsToPopupView() {
         
         startActivityIndicator()
@@ -301,7 +320,6 @@ class SubjectTableViewController: UITableViewController, listListener {
     @IBAction func addSubject(_ sender: Any) {
         
         downloadSubjectsToPopupView()
-        //animateIn()
     }
     
     
@@ -322,12 +340,6 @@ class SubjectTableViewController: UITableViewController, listListener {
         animateOutSwipeInfo()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
-    }
-
-
     override func numberOfSections(in tableView: UITableView) -> Int {
      
         return 1
@@ -337,12 +349,6 @@ class SubjectTableViewController: UITableViewController, listListener {
       
         return subjectList.count
     }
-    
-    /*override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        return "Fag"
-    }*/
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -363,8 +369,8 @@ class SubjectTableViewController: UITableViewController, listListener {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
+        //The function for swipe-left deletion of a subject
         if editingStyle == .delete {
-            print("DEL")
             
             self.startActivityIndicator()
             let subject_query = PFQuery(className: "Subjects")
@@ -404,50 +410,9 @@ class SubjectTableViewController: UITableViewController, listListener {
             
         }
     }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

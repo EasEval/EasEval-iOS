@@ -9,6 +9,7 @@
 import UIKit
 import Charts
 
+//This is the viewController class the controls the pieChart/graph. All the functions are self-explanatory. 
 class PieChartViewController: UIViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
@@ -26,13 +27,7 @@ class PieChartViewController: UIViewController {
         }
         
         self.navigationItem.title = current_exercise?.getName()
-
         loadDataIntoChart()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        //loadDataIntoChart()
     }
     
     func loadDataIntoChart() {
@@ -56,19 +51,14 @@ class PieChartViewController: UIViewController {
         
         dataDescriptionLabels.append("Google")
         dataDescriptionPoints.append(googlePercentage)
-        
         dataDescriptionLabels.append("Solutions")
         dataDescriptionPoints.append(solutionPercentage)
-        
         dataDescriptionLabels.append("Curriculum")
         dataDescriptionPoints.append(curriculumPercentage)
-        
         dataDescriptionLabels.append("Lectures")
         dataDescriptionPoints.append(lecturePercentage)
-        
         dataDescriptionLabels.append("Other")
         dataDescriptionPoints.append(otherPercentage)
-        
         setChart(dataPoints: dataDescriptionLabels, values: dataDescriptionPoints)
         
     }
@@ -89,9 +79,7 @@ class PieChartViewController: UIViewController {
         let pieChartData = PieChartData()
         pieChartData.addDataSet(pieChartDataSet)
         pieChartView.data = pieChartData
-        
         pieChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
-        
         var colors = [UIColor]()
         
         var rgbValues = [(80.0,247.0,218.0),(223.0,56.0,247.0),(208.0, 212.0, 5.0),(181.0, 207.0, 204.0), (150.0, 170.0, 174.0)]
@@ -106,30 +94,14 @@ class PieChartViewController: UIViewController {
         
         pieChartDataSet.colors = colors
         //pieChartDataSet.colors = ChartColorTemplates.colorful()
-        
         pieChartView.centerText = "Percentage used %"
         pieChartView.chartDescription?.text = "The percentage of different resources used by the students to solve the exercise"
         pieChartView.legend.enabled = false
-        //pieChartView.backgroundColor = UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 0.4)
-        
-        
-        
+    
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

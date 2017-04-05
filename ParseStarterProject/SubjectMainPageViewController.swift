@@ -13,6 +13,7 @@ import Charts
 var current_subject:Subject? = nil
 var exercises_list = [Exercise]()
 
+//This viewController class handles the subject main page view
 class SubjectMainPageViewController: UIViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
@@ -46,6 +47,7 @@ class SubjectMainPageViewController: UIViewController {
 
     }
     
+    //This is the function that gets called when the view appears and loads
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -57,10 +59,12 @@ class SubjectMainPageViewController: UIViewController {
         }
         self.title = subjectList[selectedSubject].getId()
         current_subject = subjectList[selectedSubject]
-        
-        //let subjectObject = PFObject(className: "Subjects")
-        //query.includeKey("SUBJECT")
-        //query.whereKey("SUBJECT", equalTo: subjectObject ?? 0)
+        self.downloadAllSubjectContent()
+    }
+    
+    //This function downlaos all the content of the selected subject. 
+    //All the details, values and information gets stores in the Exercise and Answer classes, which gets stores in a array
+    func downloadAllSubjectContent() {
         
         let query = PFQuery(className: "Exercises")
         query.whereKey("SUBJECTID", equalTo: current_subject?.getId() ?? "")
@@ -98,7 +102,7 @@ class SubjectMainPageViewController: UIViewController {
                             
                             otherAmount = object["otherAmount"] as! Double
                         }
-                    
+                        
                         let maxValList = [googleAmount, solutionsAmount, curriculumAmount, lectureAmount, otherAmount]
                         let maxValNames = ["googleAmount","solutionsAmount","curriculumAmount","lectureAmount","otherAmount"]
                         let maxIndex = maxValList.index(of: maxValList.max()!)
@@ -133,10 +137,9 @@ class SubjectMainPageViewController: UIViewController {
             }
             self.stopActivityIndicator()
         }
-        
-        //setChart(dataPoints: months, values: dollars1)
     }
     
+    //Updates the chart/graph with the amount value. The amount paramter must be a valid amount parameter
     func updateChartWithAmount(amount:String, description:String) {
         
         var exercises_values = [Double]()
@@ -150,6 +153,7 @@ class SubjectMainPageViewController: UIViewController {
         lineChartView.chartDescription?.text = description
     }
     
+    //Updates the graph with all the resources used to solve the exercises. This graph shows the resource usage over time. This graph will appear when the 'Resources' segment is pressed
     func updateChartWithResources() {
         
         lineChartData_resources.clearValues()
@@ -200,13 +204,13 @@ class SubjectMainPageViewController: UIViewController {
     let resourceColors = [UIColor.blue, UIColor.black, UIColor.yellow, UIColor.green, UIColor.red]
     let resourceLabels = ["% Google","% Solutions","% Curriculum","% Lectures","% Other","Exercises"]
     
+    //Sets the chart/graph with the paramterer values. isResources = true sets the resources graph, and false sets time or rating
     func setChart(dataPoints:[String], values:[Double], isResources:Bool, colorIndex:Int) {
         
         var dataEntries: [BarChartDataEntry] = []
         var colors_chart = [UIColor]()
         for i in 0..<dataPoints.count {
             let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
-            dataEntry.accessibilityLabel = "Test"
             dataEntries.append(dataEntry)
             if isResources {
                 
@@ -218,10 +222,8 @@ class SubjectMainPageViewController: UIViewController {
         }
         
         let chartDataSet = LineChartDataSet(values: dataEntries, label: resourceLabels[colorIndex])
-        
         chartDataSet.colors = colors_chart
         chartDataSet.drawValuesEnabled = true
-    
         //chartDataSet.colors = ChartColorTemplates.colorful()
         var chartData = LineChartData()
         chartData.setDrawValues(true)
@@ -295,18 +297,7 @@ class SubjectMainPageViewController: UIViewController {
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

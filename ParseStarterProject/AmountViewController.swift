@@ -9,6 +9,7 @@
 import UIKit
 import Charts
 
+//This is the viewController class that controls the amounts graph for the selected exercise. This graph shows how many students who used a given resource the most. The functions are self-explanatory
 class AmountViewController: UIViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
@@ -31,11 +32,6 @@ class AmountViewController: UIViewController {
         loadDataIntoChart()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        //loadDataIntoChart()
-    }
-    
     func loadDataIntoChart() {
         
         var dataPointValues = [Double]()
@@ -50,9 +46,7 @@ class AmountViewController: UIViewController {
             let labelIndex = rawKeys.index(of: key)
             dataPointLabels.append(labels[labelIndex!])
             //dataPointLabels.append(key)
-            
         }
-        
         setChart(dataPoints: dataPointLabels, values: dataPointValues)
         viewDidLoadProperly = true
         
@@ -60,29 +54,25 @@ class AmountViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func setChart(dataPoints:[String], values:[Double]) {
         
         var dataEntries: [BarChartDataEntry] = []
-        
         for i in 0..<dataPoints.count {
             let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
             dataEntries.append(dataEntry)
         }
         
-        let chartDataSet = BarChartDataSet(values: dataEntries, label: "Number of students who used a given resource the most")
+        let chartDataSet = BarChartDataSet(values: dataEntries, label: "NUMBER OF STUDENTS WHO USED A GIVEN RESOURCE THE MOST")
         let chartData = BarChartData()
         chartData.addDataSet(chartDataSet)
         barChartView.data = chartData
         barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
         barChartView.chartDescription?.text = ""
-        
         barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dataPoints)
         barChartView.xAxis.granularity = 1
         chartSetUpCompleted = true
         barChartView.xAxis.labelPosition = .bottom
     }
-
 }

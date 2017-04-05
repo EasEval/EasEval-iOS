@@ -9,11 +9,11 @@
 import UIKit
 import Charts
 
+//This is the viewController class that controls the ratings graph for the selected exercise. The functions are self-explanatory
 class RatingViewController: UIViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet var barChartView: BarChartView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,18 +26,11 @@ class RatingViewController: UIViewController {
         }
         
         self.navigationItem.title = current_exercise?.getName()
-        
         loadDataIntoView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        //loadDataIntoView()
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func loadDataIntoView() {
@@ -64,13 +57,10 @@ class RatingViewController: UIViewController {
                 values[4] += 1
             }
         }
-        
         setChart(dataPoints: labels, values: values)
     }
     
     func setChart(dataPoints:[String], values:[Double]) {
-        
-        //var yValues : [ChartDataEntry] = [ChartDataEntry]()
         
         var dataEntries: [BarChartDataEntry] = []
         
@@ -89,17 +79,4 @@ class RatingViewController: UIViewController {
         barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dataPoints)
         barChartView.chartDescription?.text = "HOW MANY STUDENTS WHO RATED THE EXERCISE WITHIN THE GIVEN LIMITS"
     }
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

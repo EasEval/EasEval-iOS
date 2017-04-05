@@ -8,6 +8,7 @@
 
 import UIKit
 
+//This class is the custom view that appears in the subjectTableViews
 class SubjectCell: UITableViewCell {
 
     @IBOutlet var labelSubjectCode: UILabel!

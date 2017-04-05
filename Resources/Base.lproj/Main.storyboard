@@ -31,7 +31,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="EasEval" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -95,17 +95,17 @@
                             <constraint firstAttribute="trailingMargin" secondItem="bje-XX-zgd" secondAttribute="trailing" constant="48" id="2EA-7V-GL2"/>
                             <constraint firstItem="Pgh-P2-XGg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="96" id="8g2-5W-uXi"/>
                             <constraint firstItem="Iwx-09-NnJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BVd-20-eRh"/>
+                            <constraint firstItem="bje-XX-zgd" firstAttribute="top" secondItem="bRm-xP-Hz0" secondAttribute="bottom" constant="59" id="D5X-vo-g0L"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Pgh-P2-XGg" secondAttribute="trailing" constant="97" id="ESM-dm-FUb"/>
-                            <constraint firstItem="sog-lw-WW2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="54.5" id="I2B-1C-MYq"/>
                             <constraint firstItem="sog-lw-WW2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="In6-lY-HIh"/>
-                            <constraint firstItem="oBu-fI-Vfb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-230.5" id="Jq4-t8-0vN"/>
-                            <constraint firstItem="bRm-xP-Hz0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-188.5" id="LXN-vb-DgG"/>
+                            <constraint firstItem="bRm-xP-Hz0" firstAttribute="top" secondItem="oBu-fI-Vfb" secondAttribute="bottom" constant="9" id="Qxn-Wo-WNP"/>
                             <constraint firstItem="Pgh-P2-XGg" firstAttribute="top" secondItem="bje-XX-zgd" secondAttribute="bottom" constant="21" id="X5L-ql-dtX"/>
                             <constraint firstItem="bje-XX-zgd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Z2v-6S-MM3"/>
+                            <constraint firstItem="Iwx-09-NnJ" firstAttribute="top" secondItem="Pgh-P2-XGg" secondAttribute="bottom" constant="9" id="bHt-pe-dVI"/>
                             <constraint firstItem="bRm-xP-Hz0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kZ8-7J-e0p"/>
-                            <constraint firstItem="Iwx-09-NnJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-20.5" id="nEv-ZT-50p"/>
-                            <constraint firstItem="bje-XX-zgd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="149" id="nt6-s9-Afw"/>
                             <constraint firstItem="bje-XX-zgd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="48" id="pCt-P7-XGE"/>
+                            <constraint firstItem="sog-lw-WW2" firstAttribute="top" secondItem="Iwx-09-NnJ" secondAttribute="bottom" constant="15" id="uXC-cb-JxT"/>
+                            <constraint firstItem="oBu-fI-Vfb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="ydP-61-3p5"/>
                             <constraint firstItem="Pgh-P2-XGg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="z1q-HX-9Hm"/>
                         </constraints>
                     </view>
@@ -146,14 +146,14 @@
         <!--Subjects-->
         <scene sceneID="pmF-c5-ADC">
             <objects>
-                <tableViewController id="yCb-5G-saS" customClass="SubjectTableViewController" customModule="PUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="yCb-5G-saS" customClass="SubjectTableViewController" customModule="EasEval" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="70" sectionHeaderHeight="18" sectionFooterHeight="18" id="084-EP-zVR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="subjectCell" rowHeight="70" id="bQ4-IA-XLd" customClass="SubjectCell" customModule="PUProject" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="subjectCell" rowHeight="70" id="bQ4-IA-XLd" customClass="SubjectCell" customModule="EasEval" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="56" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bQ4-IA-XLd" id="k4l-CV-VFG">
@@ -162,6 +162,9 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fagkode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQ4-9H-w7p">
                                             <rect key="frame" x="8" y="8" width="87" height="53"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="87" id="vyX-VO-TFm"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -180,7 +183,6 @@
                                         <constraint firstItem="kPr-nC-Xvv" firstAttribute="top" secondItem="k4l-CV-VFG" secondAttribute="topMargin" id="aWb-4i-qsw"/>
                                         <constraint firstItem="kPr-nC-Xvv" firstAttribute="trailing" secondItem="k4l-CV-VFG" secondAttribute="trailingMargin" id="hry-ZW-zPz"/>
                                         <constraint firstItem="kPr-nC-Xvv" firstAttribute="bottom" secondItem="k4l-CV-VFG" secondAttribute="bottomMargin" id="uoD-5t-7cI"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="oQ4-9H-w7p" secondAttribute="trailing" constant="239" id="ux0-F2-hiQ"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="oQ4-9H-w7p" secondAttribute="bottom" id="z7F-bh-FVy"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -220,7 +222,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OkA-SO-gT1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="PIK-ev-rdn" customClass="addNewSubjectView" customModule="PUProject" customModuleProvider="target">
+                <view contentMode="scaleToFill" id="PIK-ev-rdn" customClass="addNewSubjectView" customModule="EasEval" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="298" height="356"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -229,7 +231,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <prototypes>
-                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addSubject_cell" rowHeight="70" id="0t1-jk-4IQ" customClass="SubjectCell" customModule="PUProject" customModuleProvider="target">
+                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addSubject_cell" rowHeight="70" id="0t1-jk-4IQ" customClass="SubjectCell" customModule="EasEval" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="56" width="298" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0t1-jk-4IQ" id="Dde-As-Feo">
@@ -550,7 +552,7 @@
         <!--View Controller About-->
         <scene sceneID="dkX-TT-R0t">
             <objects>
-                <viewController id="LZ6-Vq-E2a" customClass="ViewControllerAbout" customModule="PUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LZ6-Vq-E2a" customClass="ViewControllerAbout" customModule="EasEval" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2R4-10-qx5"/>
                         <viewControllerLayoutGuide type="bottom" id="W6U-jO-YRb"/>
@@ -583,7 +585,6 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="RMR-WM-tbP" secondAttribute="trailing" constant="9" id="1Hm-a7-Zs2"/>
                             <constraint firstItem="vHO-6n-0MA" firstAttribute="centerX" secondItem="MWw-Kw-cro" secondAttribute="centerX" id="2nA-Oj-FeI"/>
-                            <constraint firstItem="vHO-6n-0MA" firstAttribute="centerY" secondItem="MWw-Kw-cro" secondAttribute="centerY" constant="-247.5" id="4bo-v2-0vU"/>
                             <constraint firstItem="RMR-WM-tbP" firstAttribute="top" secondItem="vHO-6n-0MA" secondAttribute="bottom" constant="8" id="Pmy-9V-Dg7"/>
                             <constraint firstItem="W6U-jO-YRb" firstAttribute="top" secondItem="RMR-WM-tbP" secondAttribute="bottom" constant="20" id="g8I-zt-v1M"/>
                             <constraint firstItem="vHO-6n-0MA" firstAttribute="top" secondItem="2R4-10-qx5" secondAttribute="bottom" constant="8" id="hrp-qO-pFh"/>
@@ -609,7 +610,7 @@
         <!--Exercises-->
         <scene sceneID="HfK-bg-koQ">
             <objects>
-                <tableViewController id="106-Ew-0Hu" customClass="ExercisesTableViewController" customModule="PUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="106-Ew-0Hu" customClass="ExercisesTableViewController" customModule="EasEval" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="24g-bU-Ou6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -647,7 +648,7 @@
         <!--Item 2-->
         <scene sceneID="ihy-9f-RBd">
             <objects>
-                <viewController id="rfE-dA-TXS" customClass="AmountViewController" customModule="PUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rfE-dA-TXS" customClass="AmountViewController" customModule="EasEval" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4EP-IC-CQO"/>
                         <viewControllerLayoutGuide type="bottom" id="O6g-15-Y7T"/>
@@ -689,7 +690,7 @@
         <!--Time Chart View Controller-->
         <scene sceneID="y4B-vH-0Qh">
             <objects>
-                <viewController id="C7R-Vu-dXu" customClass="TimeChartViewController" customModule="PUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="C7R-Vu-dXu" customClass="TimeChartViewController" customModule="EasEval" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="J4v-Ac-2K1"/>
                         <viewControllerLayoutGuide type="bottom" id="BSI-2M-MJa"/>
@@ -799,7 +800,7 @@
         <!--Pie Chart View Controller-->
         <scene sceneID="TYt-sl-yB8">
             <objects>
-                <viewController id="ciy-Bl-9bw" customClass="PieChartViewController" customModule="PUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ciy-Bl-9bw" customClass="PieChartViewController" customModule="EasEval" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cvf-32-gBN"/>
                         <viewControllerLayoutGuide type="bottom" id="DcQ-OI-UvB"/>
@@ -840,7 +841,7 @@
         <!--Item 1-->
         <scene sceneID="N46-rS-Rst">
             <objects>
-                <viewController id="eVu-3a-vGg" customClass="RatingViewController" customModule="PUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eVu-3a-vGg" customClass="RatingViewController" customModule="EasEval" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="23k-wR-Cc7"/>
                         <viewControllerLayoutGuide type="bottom" id="w62-YE-kyn"/>
@@ -946,7 +947,7 @@
         <!--Subject Main Page View Controller-->
         <scene sceneID="CPd-Lj-lMT">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="uJ5-8M-Njd" customClass="SubjectMainPageViewController" customModule="PUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="uJ5-8M-Njd" customClass="SubjectMainPageViewController" customModule="EasEval" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kld-sW-CDd"/>
                         <viewControllerLayoutGuide type="bottom" id="i5z-3G-5nW"/>
@@ -961,6 +962,9 @@
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UO9-Y9-Bc3">
                                 <rect key="frame" x="54" y="79" width="267" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="267" id="zgi-Hz-fZd"/>
+                                </constraints>
                                 <segments>
                                     <segment title="Ratings"/>
                                     <segment title="Time spent"/>
@@ -974,11 +978,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="UO9-Y9-Bc3" secondAttribute="trailing" constant="38" id="1eP-di-X8D"/>
                             <constraint firstItem="UO9-Y9-Bc3" firstAttribute="top" secondItem="Kld-sW-CDd" secondAttribute="bottom" constant="15" id="3YL-p2-gps"/>
                             <constraint firstItem="QGU-jJ-iGU" firstAttribute="top" secondItem="Kld-sW-CDd" secondAttribute="bottom" constant="51" id="4L2-3q-SPY"/>
                             <constraint firstItem="QGU-jJ-iGU" firstAttribute="leading" secondItem="GO9-Wb-Ivb" secondAttribute="leading" id="65K-U0-iea"/>
-                            <constraint firstItem="UO9-Y9-Bc3" firstAttribute="leading" secondItem="GO9-Wb-Ivb" secondAttribute="leadingMargin" constant="38" id="FgU-y3-cU6"/>
+                            <constraint firstItem="UO9-Y9-Bc3" firstAttribute="centerX" secondItem="GO9-Wb-Ivb" secondAttribute="centerX" id="NXh-uv-ab4"/>
                             <constraint firstAttribute="trailing" secondItem="QGU-jJ-iGU" secondAttribute="trailing" id="rej-eJ-cHM"/>
                             <constraint firstItem="i5z-3G-5nW" firstAttribute="top" secondItem="QGU-jJ-iGU" secondAttribute="bottom" id="rsM-Ei-SbI"/>
                             <constraint firstItem="QGU-jJ-iGU" firstAttribute="top" secondItem="UO9-Y9-Bc3" secondAttribute="bottom" constant="8" id="s7b-aC-kiW"/>
@@ -1056,13 +1059,13 @@
         <!--Comment Table View Controller-->
         <scene sceneID="99t-v3-i1v">
             <objects>
-                <tableViewController id="tTN-z6-nYV" customClass="CommentTableViewController" customModule="PUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="tTN-z6-nYV" customClass="CommentTableViewController" customModule="EasEval" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="95" sectionHeaderHeight="18" sectionFooterHeight="18" id="a61-WA-jLd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="comment_cell" rowHeight="95" id="Tv1-mh-mFZ" customClass="CommentCell" customModule="PUProject" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="comment_cell" rowHeight="95" id="Tv1-mh-mFZ" customClass="CommentCell" customModule="EasEval" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="56" width="375" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tv1-mh-mFZ" id="5YJ-MF-gxK">

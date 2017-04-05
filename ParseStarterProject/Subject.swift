@@ -8,6 +8,7 @@
 
 import Foundation
 
+//This class stores necessary information about a subject
 class Subject {
     
     let id:String

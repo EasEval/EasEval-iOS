@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "81BA81441A49DA1800E65899"
-               BuildableName = "PUProject.app"
-               BlueprintName = "PUProject"
-               ReferencedContainer = "container:PUProject.xcodeproj">
+               BuildableName = "EasEval.app"
+               BlueprintName = "EasEval"
+               ReferencedContainer = "container:EasEval.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7533777B1E6FED2C0049BD3A"
-               BuildableName = "PUProjectTests.xctest"
-               BlueprintName = "PUProjectTests"
-               ReferencedContainer = "container:PUProject.xcodeproj">
+               BuildableName = "EasEvalTests.xctest"
+               BlueprintName = "EasEvalTests"
+               ReferencedContainer = "container:EasEval.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "81BA81441A49DA1800E65899"
-            BuildableName = "PUProject.app"
-            BlueprintName = "PUProject"
-            ReferencedContainer = "container:PUProject.xcodeproj">
+            BuildableName = "EasEval.app"
+            BlueprintName = "EasEval"
+            ReferencedContainer = "container:EasEval.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "81BA81441A49DA1800E65899"
-            BuildableName = "PUProject.app"
-            BlueprintName = "PUProject"
-            ReferencedContainer = "container:PUProject.xcodeproj">
+            BuildableName = "EasEval.app"
+            BlueprintName = "EasEval"
+            ReferencedContainer = "container:EasEval.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -85,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "81BA81441A49DA1800E65899"
-            BuildableName = "PUProject.app"
-            BlueprintName = "PUProject"
-            ReferencedContainer = "container:PUProject.xcodeproj">
+            BuildableName = "EasEval.app"
+            BlueprintName = "EasEval"
+            ReferencedContainer = "container:EasEval.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

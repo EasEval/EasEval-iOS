@@ -8,23 +8,17 @@
 
 import XCTest
 
+//This class test the different isolated classes widely used in the application
 class PUProjectTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
         
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-        
-        //XCUIApplication().launch()
-    
     }
 
-    
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        
         super.tearDown()
     }
     
@@ -92,10 +86,42 @@ class PUProjectTests: XCTestCase {
         XCTAssertEqual(testSubject.getExercises().count, 1)
     }
     
+    func testAnswerAndExerciseClass() {
+        
+        let google_amount = 10.0
+        let solutions_amount = 20.0
+        let curriculum_amount = 50.0
+        let lecture_amount = 10.0
+        let other_amount = 10.0
+        let rating = 40.0
+        let time = 20.0
+        
+        let testAnswer = Answer(gAm: google_amount, sAm: solutions_amount, cAm: curriculum_amount, lAm: lecture_amount, oAm: other_amount, rating: rating, time: time, comment: "Good")
+        
+        XCTAssertEqual(testAnswer.getTime(), time)
+        XCTAssertEqual(testAnswer.getRating(), rating)
+        XCTAssertEqual(testAnswer.getGoogleAmount(), google_amount)
+        XCTAssertEqual(testAnswer.getSolutionsAmount(), solutions_amount)
+        XCTAssertEqual(testAnswer.getCurriculumAmount(), curriculum_amount)
+        XCTAssertEqual(testAnswer.getLectureAmount(), lecture_amount)
+        XCTAssertEqual(testAnswer.getotherAmount(), other_amount)
+        
+        let testExercise = Exercise(id: "2XX3", name: "TestExer", subId: "TMA4100")
+        
+        testExercise.addAnswer(answer: testAnswer)
+        
+        XCTAssertEqual(testExercise.getAnswers()[0].getTime(), time)
+        XCTAssertEqual(testExercise.getAnswers()[0].getRating(), rating)
+        XCTAssertEqual(testExercise.getAnswers()[0].getGoogleAmount(), google_amount)
+        XCTAssertEqual(testExercise.getAnswers()[0].getSolutionsAmount(), solutions_amount)
+        XCTAssertEqual(testExercise.getAnswers()[0].getCurriculumAmount(), curriculum_amount)
+        XCTAssertEqual(testExercise.getAnswers()[0].getLectureAmount(), lecture_amount)
+        XCTAssertEqual(testExercise.getAnswers()[0].getotherAmount(), other_amount)
+        
+    }
+    
     func testPerformanceExample() {
-        // This is an example of a performance test case.
         self.measure {
-            // Put the code you want to measure the time of here.
         }
     }
     

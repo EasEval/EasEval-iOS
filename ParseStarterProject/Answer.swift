@@ -8,6 +8,7 @@
 
 import Foundation
 
+//This class stores all necessary information and content of a student answer to a exercise
 class Answer {
     
     private var googleAmount:Double

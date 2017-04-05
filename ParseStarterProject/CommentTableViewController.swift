@@ -8,6 +8,7 @@
 
 import UIKit
 
+//This viewController class provides the professor with a tableView, where he/she can see all the comments for a given exercise.
 class CommentTableViewController: UITableViewController {
     
     @IBOutlet var comment_popup_view: UIView!
@@ -52,8 +53,6 @@ class CommentTableViewController: UITableViewController {
         
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
@@ -90,12 +89,12 @@ class CommentTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         comment_popup_textview.text = comments[indexPath.row]
-        animateIn(myView: comment_popup_view, indexPath: indexPath)
+        animateInCommentPopupView(myView: comment_popup_view, indexPath: indexPath)
     }
     
     @IBAction func hide_popup_view(_ sender: Any) {
         
-        animateOut(myView: comment_popup_view)
+        animateOutCommentPopupView(myView: comment_popup_view)
         deselectRow()
     }
     
@@ -108,7 +107,7 @@ class CommentTableViewController: UITableViewController {
         }
     }
     
-    func animateIn(myView:UIView, indexPath:IndexPath) {
+    func animateInCommentPopupView(myView:UIView, indexPath:IndexPath) {
         
         if !popupViewIsUp {
             
@@ -151,7 +150,7 @@ class CommentTableViewController: UITableViewController {
         }
     }
     
-    func animateOut(myView:UIView) {
+    func animateOutCommentPopupView(myView:UIView) {
         
         popupViewIsUp = false
         self.blurEffectView?.removeFromSuperview()

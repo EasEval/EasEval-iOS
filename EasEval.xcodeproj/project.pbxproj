@@ -15,6 +15,7 @@
 		7507AF911E79A3DF005DB299 /* TimeChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7507AF901E79A3DF005DB299 /* TimeChartViewController.swift */; };
 		750D17921E8B972300766E5B /* CommentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D17911E8B972300766E5B /* CommentTableViewController.swift */; };
 		750D17961E8B97AF00766E5B /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D17951E8B97AF00766E5B /* CommentCell.swift */; };
+		751B00891E94C8AD0014FF74 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7507AF8E1E79919D005DB299 /* Answer.swift */; };
 		752A7B9F1E355AD10062E1FB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 752A7B9E1E355AD10062E1FB /* Launch Screen.storyboard */; };
 		753377891E7013980049BD3A /* CreateOrderViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753377881E7013980049BD3A /* CreateOrderViewControllerTests.swift */; };
 		7533778C1E701A1D0049BD3A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814C1A49DA1800E65899 /* LoginViewController.swift */; };
@@ -101,7 +102,7 @@
 		750D17911E8B972300766E5B /* CommentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewController.swift; sourceTree = "<group>"; };
 		750D17951E8B97AF00766E5B /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		752A7B9E1E355AD10062E1FB /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		7533777C1E6FED2C0049BD3A /* PUProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PUProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7533777C1E6FED2C0049BD3A /* EasEvalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasEvalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7533777E1E6FED2C0049BD3A /* PUProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUProjectTests.swift; sourceTree = "<group>"; };
 		753377801E6FED2C0049BD3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		753377881E7013980049BD3A /* CreateOrderViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderViewControllerTests.swift; sourceTree = "<group>"; };
@@ -123,7 +124,7 @@
 		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		814C3AC81B69877600E307BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		814C3AC91B69877600E307BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		81BA81451A49DA1800E65899 /* PUProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PUProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		81BA81451A49DA1800E65899 /* EasEval.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasEval.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81BA814A1A49DA1800E65899 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81BA814C1A49DA1800E65899 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		81BA816B1A49DB6800E65899 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -255,8 +256,8 @@
 		81BA81461A49DA1800E65899 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				81BA81451A49DA1800E65899 /* PUProject.app */,
-				7533777C1E6FED2C0049BD3A /* PUProjectTests.xctest */,
+				81BA81451A49DA1800E65899 /* EasEval.app */,
+				7533777C1E6FED2C0049BD3A /* EasEvalTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -307,9 +308,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7533777B1E6FED2C0049BD3A /* PUProjectTests */ = {
+		7533777B1E6FED2C0049BD3A /* EasEvalTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 753377871E6FED2C0049BD3A /* Build configuration list for PBXNativeTarget "PUProjectTests" */;
+			buildConfigurationList = 753377871E6FED2C0049BD3A /* Build configuration list for PBXNativeTarget "EasEvalTests" */;
 			buildPhases = (
 				753377781E6FED2C0049BD3A /* Sources */,
 				753377791E6FED2C0049BD3A /* Frameworks */,
@@ -320,14 +321,14 @@
 			dependencies = (
 				753377821E6FED2C0049BD3A /* PBXTargetDependency */,
 			);
-			name = PUProjectTests;
+			name = EasEvalTests;
 			productName = PUProjectTests;
-			productReference = 7533777C1E6FED2C0049BD3A /* PUProjectTests.xctest */;
+			productReference = 7533777C1E6FED2C0049BD3A /* EasEvalTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		81BA81441A49DA1800E65899 /* PUProject */ = {
+		81BA81441A49DA1800E65899 /* EasEval */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 81BA81641A49DA1800E65899 /* Build configuration list for PBXNativeTarget "PUProject" */;
+			buildConfigurationList = 81BA81641A49DA1800E65899 /* Build configuration list for PBXNativeTarget "EasEval" */;
 			buildPhases = (
 				81BA81411A49DA1800E65899 /* Sources */,
 				81BA81421A49DA1800E65899 /* Frameworks */,
@@ -339,9 +340,9 @@
 			dependencies = (
 				75C3BA551E5DC45400343351 /* PBXTargetDependency */,
 			);
-			name = PUProject;
+			name = EasEval;
 			productName = ParseStarterProject;
-			productReference = 81BA81451A49DA1800E65899 /* PUProject.app */;
+			productReference = 81BA81451A49DA1800E65899 /* EasEval.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -364,10 +365,11 @@
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 5V835P4U52;
 						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 81BA81401A49DA1800E65899 /* Build configuration list for PBXProject "PUProject" */;
+			buildConfigurationList = 81BA81401A49DA1800E65899 /* Build configuration list for PBXProject "EasEval" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -386,8 +388,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				81BA81441A49DA1800E65899 /* PUProject */,
-				7533777B1E6FED2C0049BD3A /* PUProjectTests */,
+				81BA81441A49DA1800E65899 /* EasEval */,
+				7533777B1E6FED2C0049BD3A /* EasEvalTests */,
 			);
 		};
 /* End PBXProject section */
@@ -444,6 +446,7 @@
 				7507AF841E794836005DB299 /* Exercise.swift in Sources */,
 				7507AF831E794833005DB299 /* Subject.swift in Sources */,
 				7507AF8B1E79609C005DB299 /* PUProjectTests.swift in Sources */,
+				751B00891E94C8AD0014FF74 /* Answer.swift in Sources */,
 				7507AF821E794634005DB299 /* Utilities.swift in Sources */,
 				753377891E7013980049BD3A /* CreateOrderViewControllerTests.swift in Sources */,
 			);
@@ -479,7 +482,7 @@
 /* Begin PBXTargetDependency section */
 		753377821E6FED2C0049BD3A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 81BA81441A49DA1800E65899 /* PUProject */;
+			target = 81BA81441A49DA1800E65899 /* EasEval */;
 			targetProxy = 753377811E6FED2C0049BD3A /* PBXContainerItemProxy */;
 		};
 		75C3BA551E5DC45400343351 /* PBXTargetDependency */ = {
@@ -517,7 +520,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PUProject.app/PUProject";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EasEval.app/EasEval";
 			};
 			name = Debug;
 		};
@@ -536,7 +539,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Eilertsen.PUProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PUProject.app/PUProject";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EasEval.app/EasEval";
 			};
 			name = Release;
 		};
@@ -559,6 +562,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: August Lund Eilertsen (5V835P4U52)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -606,7 +610,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: August Lund Eilertsen (5V835P4U52)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: August Lund Eilertsen (5V835P4U52)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -634,6 +639,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: August Lund Eilertsen (5V835P4U52)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5V835P4U52;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -641,11 +648,13 @@
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.parse.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = PUProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EasEval;
+				PRODUCT_NAME = EasEval;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ParseStarterProject/PUProject-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -656,6 +665,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: August Lund Eilertsen (5V835P4U52)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5V835P4U52;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -663,17 +674,19 @@
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.parse.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = PUProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EasEval;
+				PRODUCT_NAME = EasEval;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ParseStarterProject/PUProject-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		753377871E6FED2C0049BD3A /* Build configuration list for PBXNativeTarget "PUProjectTests" */ = {
+		753377871E6FED2C0049BD3A /* Build configuration list for PBXNativeTarget "EasEvalTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				753377831E6FED2C0049BD3A /* Debug */,
@@ -682,7 +695,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		81BA81401A49DA1800E65899 /* Build configuration list for PBXProject "PUProject" */ = {
+		81BA81401A49DA1800E65899 /* Build configuration list for PBXProject "EasEval" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				81BA81621A49DA1800E65899 /* Debug */,
@@ -691,7 +704,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		81BA81641A49DA1800E65899 /* Build configuration list for PBXNativeTarget "PUProject" */ = {
+		81BA81641A49DA1800E65899 /* Build configuration list for PBXNativeTarget "EasEval" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				81BA81651A49DA1800E65899 /* Debug */,

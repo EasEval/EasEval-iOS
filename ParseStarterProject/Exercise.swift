@@ -8,6 +8,8 @@
 
 import Foundation
 
+//This class stores information and content of a exercise. 
+
 class Exercise {
     
     private let id:String
@@ -55,6 +57,7 @@ class Exercise {
         return self.amounts
     }
     
+    //Returns a amount for a given key. The key must be a valid amount key. For instance 'googleAmount'
     func getAmountFromKey(key:String) -> (Double, Double) {
         
         if amountHasKey(key: key) {
@@ -64,6 +67,7 @@ class Exercise {
         return (0,0)
     }
     
+    //Adds a amount for the paramter key in a dictionairy. The key must be a valid amountkey.
     func addAmountForKey(key:String, amount:Double) {
         
         if !amountHasKey(key: key) {
@@ -86,6 +90,7 @@ class Exercise {
         return false
     }
     
+    //Adds one to the 'mostUsedResource' dictionairy. This will be added if the amount for the given key is larger than alle the other amounts
     func addMostUsedResourceForKey(key:String) {
         
         if(!self.resourceHasKey(key:key)) {

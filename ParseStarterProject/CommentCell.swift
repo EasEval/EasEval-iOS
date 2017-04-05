@@ -8,8 +8,8 @@
 
 import UIKit
 
+//The class that controls a comment cell in the comments tableView of a given exercise
 class CommentCell: UITableViewCell {
 
     @IBOutlet var label_comment: UILabel!
-
 }
